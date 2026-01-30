@@ -28,7 +28,7 @@
   in {
     nixosConfigurations = nixpkgs.lib.genAttrs hostList (hostName: nixpkgs.lib.nixosSystem {
       modules = [
-        "${hostDir}/${hostName}"
+        (hostDir + "/${hostName}")
         inputs.disko.nixosModules.disko
         inputs.home-manager.nixosModules.home-manager
         {
