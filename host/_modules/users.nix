@@ -28,7 +28,7 @@ in {
 
   home-manager = {
     users = lib.mapAttrs (userName: userData:
-      "${userDir}/${userName}"
+      (userDir + "/${userName}")
     ) userList;
   };
 }
