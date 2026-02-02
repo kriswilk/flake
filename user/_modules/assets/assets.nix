@@ -1,17 +1,17 @@
 { config, lib, pkgs, ... }:
 
 let
-  isAsset = name: type: 
-    type == "regular" && !lib.hasSuffix ".nix" name;
+  isDir = name: type: type == "directory";
+    #type == "regular" && !lib.hasSuffix ".nix" name;
   
-  assetFiles = lib.filterAttrs isAsset (builtins.readDir ./.);
+  assetDirs = lib.filterAttrs isDir (builtins.readDir ./.);
 
-  assetLinks = lib.mapAttrs' (name: _: 
+  dirLinks = lib.mapAttrs' (name: _: 
     lib.nameValuePair 
       "flake-assets/${name}"
       { source = ./${name}; }
-  ) assetFiles;
+  ) assetDirs;
 in
 {
-  xdg.dataFile = assetLinks;
+  xdg.dataFile = dirLinks;
 }
