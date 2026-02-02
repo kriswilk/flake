@@ -9,6 +9,7 @@ input {
 }
 
 layout {
+    background-color "#000000"
     gaps 12
     center-focused-column "never"
     preset-column-widths {
@@ -37,10 +38,7 @@ layout {
 }
 
 spawn-at-startup "waybar"
-spawn-sh-at-startup "swww img $XDG_DATA_HOME/flake-assets/wallpaper/nix-white-on-blue-with-dots-dark.png"
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-sh-at-startup "swaybg -i $XDG_DATA_HOME/flake-assets/wallpaper/abstract_web.png"
 
 hotkey-overlay {
     skip-at-startup
@@ -54,26 +52,37 @@ window-rule {
 }
 
 binds {
+    // toggle inhibitor
+    Mod+Shift+Ctrl+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
     // hotkey help
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // overview
     Mod+O repeat=false { toggle-overview; }
 
-    // close
-    Mod+Delete repeat=false { close-window; }
+    // close window or session
+    Mod+Q       repeat=false                       { close-window; }
+    Mod+Shift+Q hotkey-overlay-title="Log Out"     { quit; }
 
-    // quit
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
+    // lock
+    Mod+Escape hotkey-overlay-title="Lock Screen" { spawn-sh "swaylock"; }
 
     // shortcuts
-    Mod+Return hotkey-overlay-title="Terminal" { spawn-sh "env $TERMINAL"; }
-    Mod+Space hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
-    Mod+E hotkey-overlay-title="Emoji Picker" { spawn "menu-emoji"; }
-    Mod+V hotkey-overlay-title="Clipboard History" { spawn "menu-clipboard"; }
-    Mod+P hotkey-overlay-title="Power Menu" { spawn "menu-power"; }
+    Mod+T  hotkey-overlay-title="Terminal"     { spawn-sh "env $TERMINAL"; }
+    Mod+B  hotkey-overlay-title="Browser"      { spawn-sh "env $BROWSER"; }
+    Mod+Y  hotkey-overlay-title="File Manager" { spawn-sh "env $TERMINAL yazi"; }
+    Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "env $TERMINAL qalc"; }
+
+    // menus
+    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "menu-power-options"; }
+    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "fuzzel"; }
+    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "menu-clipboard-history"; }
+
+    // menus - symbols
+    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "menu-symbols-emoji"; }
+    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "menu-symbols-nerdfont"; }
+    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "menu-symbols-math"; }
 
     // volume
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
@@ -90,6 +99,11 @@ binds {
     // brightness
     XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set +10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set 10%-"; }
+
+    // screenshots
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
 
     // window - focus
     Mod+Left  { focus-column-left; }
@@ -110,13 +124,6 @@ binds {
     Mod+Ctrl+J     { move-window-down; }
     Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+L     { move-column-right; }
-
-    // Alternative commands that move across workspaces when reaching
-    // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
@@ -141,14 +148,6 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    // ...
-
-    // And you can also move a whole workspace to another monitor:
-    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
-    // ...
-
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
@@ -157,10 +156,6 @@ binds {
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     Mod+Ctrl+I         { move-column-to-workspace-up; }
-
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
-    // ...
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
@@ -203,11 +198,8 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Ctrl+1 { move-window-to-workspace 1; }
-
-    // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
+    // previous workspace
+    Mod+Tab { focus-workspace-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
@@ -229,10 +221,6 @@ binds {
     Mod+Shift+M { fullscreen-window; }
     Mod+Ctrl+M { expand-column-to-available-width; }
 
-    // center
-    Mod+C { center-column; }
-    Mod+Ctrl+C { center-visible-columns; }
-
     // resize
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
@@ -242,35 +230,4 @@ binds {
     // float
     Mod+F       { toggle-window-floating; }
     Mod+Shift+F { switch-focus-between-floating-and-tiling; }
-
-    // Toggle tabbed column display mode.
-    // Windows in this column will appear as vertical tabs,
-    // rather than stacked on top of each other.
-    Mod+W { toggle-column-tabbed-display; }
-
-    // Actions to switch layouts.
-    // Note: if you uncomment these, make sure you do NOT have
-    // a matching layout switch hotkey configured in xkb options above.
-    // Having both at once on the same hotkey will break the switching,
-    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
-
-    // screenshots
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
-
-    // Applications such as remote-desktop clients and software KVM switches may
-    // request that niri stops processing the keyboard shortcuts defined here
-    // so they may, for example, forward the key presses as-is to a remote machine.
-    // It's a good idea to bind an escape hatch to toggle the inhibitor,
-    // so a buggy application can't hold your session hostage.
-    //
-    // The allow-inhibiting=false property can be applied to other binds as well,
-    // which ensures niri always processes them, even when an inhibitor is active.
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-
-    // power off monitors
-    Mod+Shift+P { power-off-monitors; }
 }
