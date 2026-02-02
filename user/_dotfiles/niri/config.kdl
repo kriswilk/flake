@@ -52,10 +52,10 @@ window-rule {
 }
 
 binds {
-    // toggle inhibitor
+    // hotkey inhibitor
     Mod+Shift+Ctrl+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    // hotkey help
+    // help
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // overview
@@ -68,18 +68,18 @@ binds {
     // lock
     Mod+Escape hotkey-overlay-title="Lock Screen" { spawn-sh "swaylock"; }
 
-    // shortcuts
+    // shortcut
     Mod+T  hotkey-overlay-title="Terminal"     { spawn-sh "env $TERMINAL"; }
     Mod+B  hotkey-overlay-title="Browser"      { spawn-sh "env $BROWSER"; }
     Mod+Y  hotkey-overlay-title="File Manager" { spawn-sh "env $TERMINAL yazi"; }
     Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "env $TERMINAL qalc"; }
 
-    // menus
+    // menu
     Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "menu-power-options"; }
     Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "fuzzel"; }
     Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "menu-clipboard-history"; }
 
-    // menus - symbols
+    // menu - symbols
     Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "menu-symbols-emoji"; }
     Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "menu-symbols-nerdfont"; }
     Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "menu-symbols-math"; }
@@ -100,10 +100,28 @@ binds {
     XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set +10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set 10%-"; }
 
-    // screenshots
+    // screenshot
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
+
+    // floating
+    Mod+F       { toggle-window-floating; }
+    Mod+Shift+F { switch-focus-between-floating-and-tiling; }
+
+    // window - size presets
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    // window - size nudge
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    // window - maximize
+    Mod+M { maximize-column; }
+    Mod+Shift+M { fullscreen-window; }
+    Mod+Ctrl+M { expand-column-to-available-width; }
 
     // window - focus
     Mod+Left  { focus-column-left; }
@@ -211,23 +229,4 @@ binds {
     Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
-
-    Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
-
-    // maximize
-    Mod+M { maximize-column; }
-    Mod+Shift+M { fullscreen-window; }
-    Mod+Ctrl+M { expand-column-to-available-width; }
-
-    // resize
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
-
-    // float
-    Mod+F       { toggle-window-floating; }
-    Mod+Shift+F { switch-focus-between-floating-and-tiling; }
 }
