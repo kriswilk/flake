@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 list="   Lock\n 󰤄  Suspend\n 󰜎  Log Out\n   Reboot\n   Shutdown"

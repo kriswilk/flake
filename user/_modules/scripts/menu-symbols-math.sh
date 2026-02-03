@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 list="$(cat "$XDG_DATA_HOME/flake-assets/symbols/math.txt")"

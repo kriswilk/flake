@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 dmenu="fuzzel --dmenu --minimal-lines"
