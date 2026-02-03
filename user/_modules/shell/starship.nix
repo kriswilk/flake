@@ -5,14 +5,11 @@
     enable = true;
     settings = {
       format = lib.concatStrings [
-        "$sudo"
         "$username"
         "$hostname"
         "$directory"
         "$git_branch"
         "$git_commit"
-        "$git_state"
-        "$git_metrics"
         "$git_status"
         "$docker_context"
         "$package"
@@ -32,9 +29,6 @@
         "$rust"
 
         "$nix_shell"
-        "$aws"
-        "$gcloud"
-        "$azure"
 
         "$cmd_duration"
 
@@ -49,61 +43,53 @@
 
       # left side segments - core
 
-      sudo = {
-        disabled = false;
-        symbol = " ";
-        format = "[$symbol]($style)";
-        style = "bold yellow";
-      };
-
       username = {
         show_always = true;
-        format = "[$user]($style) [|](bright-black) ";
+        format = "[$user]($style)";
       };
       
       hostname = {
         ssh_only = false;
-        ssh_symbol = " ";
-        format = "[$ssh_symbol$hostname]($style) [|](bright-black) ";
+        format = "@[$hostname]($style) ";
         style = "bold green";
       };
       
       directory = {
-        format = "[$read_only]($read_only_style)[$path]($style) ";
-        read_only = "󰌾 ";
+        format = "[|](bright-black) [$read_only]($read_only_style)[$path]($style) ";
+        read_only = "R ";
         style = "bold blue";
         truncate_to_repo = false;
         truncation_length = 3;
-        truncation_symbol = "…/";
+        truncation_symbol = ".../";
       };
       
       # left side segments - dev / container
 
       git_branch = {
-        symbol = " ";
+        symbol = "";
+        truncation_symbol = "...";
       };
       
       git_commit = {
-        tag_symbol = "  ";
-      };
-      
-      git_state = {
-      };
-      
-      git_metrics = {
+        tag_symbol = " tag ";
       };
       
       git_status = {
+        ahead = ">";
+        behind = "<";
+        diverged = "<>";
+        renamed = "r";
+        deleted = "x";
       };
       
       docker_context = {
-        symbol = " ";
-        format = "[$symbol$context]($style) [|](bright-black) ";
+        symbol = "docker ";
+        format = "[|](bright-black) [$symbol$context]($style) ";
       };
       
       package = {
-        symbol = "󰏗 ";
-        format = "(is [$symbol$version]($style) )";
+        symbol = "pkg ";
+        format = "[|](bright-black) [$symbol$version]($style) ";
       };
       
       # fill
@@ -116,86 +102,72 @@
 
       c = {
         symbol = "C ";
-        format = "([$symbol($version(-$name))]($style) [|](bright-black)) ";
+        format = " [$symbol($version(-$name))]($style) [|](bright-black)";
       };
       
       cpp = {
         symbol = "C++ ";
-        format = "([$symbol($version(-$name))]($style) [|](bright-black)) ";
+        format = " [$symbol($version(-$name))]($style) [|](bright-black)";
       };
 
       cmake = {
         symbol = "cmake ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
       golang = {
         symbol = "go ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
       java = {
         symbol = "java ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
       lua = {
         symbol = "lua ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
       nodejs = {
         symbol = "nodejs ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
       perl = {
         symbol = "pl ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
       python = {
         symbol = "py ";
-        format = "([\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style)[|](bright-black)) ";
+        format = " [\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style)[|](bright-black)";
       };
 
       ruby = {
         symbol = "rb ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
       rust = {
         symbol = "rs ";
-        format = "([$symbol($version)]($style) [|](bright-black)) ";
+        format = " [$symbol($version)]($style) [|](bright-black)";
       };
 
-      # right side segments - os / cloud
+      # right side segments - other
 
       nix_shell = {
-        symbol = " ";
-        format = "[$symbol$state( \($name\))]($style) [|](bright-black) ";
-      };
-
-      aws = {
-        symbol = "aws ";
-        format = "[$symbol($profile )(\($region\) )(\[$duration\] )]($style) [|](bright-black) ";
-      };
-
-      gcloud = {
-        symbol = "gcp ";
-        format = "[$symbol$account(@$domain)(\($region\))]($style) [|](bright-black) ";
-      };
-
-      azure = {
-        symbol = "azr ";
-        format = "on [$symbol($subscription)]($style) [|](bright-black) ";
+        symbol = "nix ";
+        format = " [$symbol$state( \($name\))]($style) [|](bright-black)";
       };
 
       # command duration
 
       cmd_duration = {
-        format = "󱎫 [$duration]($style)";
+        format = " [$duration]($style)";
         style = "white";
+        min_time = 0;
       };
 
       # command line segments
@@ -207,14 +179,21 @@
       };
 
       status = {
-        symbol = " ";
         disabled = false;
+        symbol = "";
       };
 
       container = {
       };
 
       character = {
+        format = "$symbol ";
+        success_symbol = "[>](bold green)";
+        error_symbol = "[>](bold red)";
+        vimcmd_symbol = "[<](bold green)";
+        vimcmd_replace_one_symbol = "[<](bold orange)";
+        vimcmd_replace_symbol = "[<](bold orange)";
+        vimcmd_visual_symbol = "[<](bold purple)";
       };
     };
   };
