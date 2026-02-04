@@ -38,7 +38,7 @@ layout {
 }
 
 spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -i $XDG_DATA_HOME/flake-assets/wallpaper/abstract_web.png"
+spawn-sh-at-startup "swaybg -i $XDG_DATA_HOME/flake-asset/wallpaper/abstract_web.png"
 
 hotkey-overlay {
     skip-at-startup
@@ -49,6 +49,13 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
+}
+
+window-rule {
+    match app-id="floating-menu"
+    open-floating true
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
 }
 
 binds {
@@ -75,14 +82,15 @@ binds {
     Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "env $TERMINAL qalc"; }
 
     // menu
-    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "menu-power-options"; }
-    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "fuzzel"; }
-    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "menu-clipboard-history"; }
+    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "floating-menu menu-power-options"; }
+    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "floating-menu menu-run-applications"; }
+    Mod+Shift+Space                                       { spawn-sh "floating-menu menu-run"; }
+    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "floating-menu menu-clipboard-history"; }
 
     // menu - symbols
-    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "menu-symbols-emoji"; }
-    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "menu-symbols-nerdfont"; }
-    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "menu-symbols-math"; }
+    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "floating-menu menu-symbols emoji"; }
+    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "floating-menu menu-symbols nerdfont"; }
+    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "floating-menu menu-symbols math"; }
 
     // volume
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 
+with config.lib.stylix.colors.withHashtag;
 {
   programs.fd = {
     enable = true;
@@ -7,6 +8,17 @@
 
   programs.fzf = {
     enable = true;
+    colors = {
+      pointer = lib.mkForce red;
+      marker = lib.mkForce base04;
+      prompt = lib.mkForce green;
+      info = lib.mkForce base04;
+    };
+    defaultOptions = [
+      "--layout=reverse"
+      "--info=right"
+      "--highlight-line"
+    ];
   };
 
   programs.yazi = {
