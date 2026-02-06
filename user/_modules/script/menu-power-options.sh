@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-list=" Lock\n Suspend\n󰜎 Log Out\n Reboot\n Shutdown"
+list=" Lock\n Suspend\n Log Out\n Reboot\n Shutdown"
 
 case $(echo -e "$list" | fzf) in
   *"Lock")
