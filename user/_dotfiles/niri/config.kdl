@@ -77,7 +77,7 @@ binds {
     Mod+T  hotkey-overlay-title="Terminal"     { spawn-sh "$TERMINAL"; }
     Mod+B  hotkey-overlay-title="Browser"      { spawn-sh "$BROWSER"; }
     Mod+Y  hotkey-overlay-title="File Manager" { spawn-sh "$TERMINAL -e yazi"; }
-    Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "$TERMINAL -e qalc"; }
+    Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "$TERMINAL_FLOAT -e qalc"; }
 
     // menu
     Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "$TERMINAL_FLOAT -e menu-power-options"; }
