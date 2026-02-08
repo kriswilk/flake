@@ -9,15 +9,16 @@ with config.lib.stylix.colors.withHashtag;
   programs.fzf = {
     enable = true;
     colors = {
-      pointer = lib.mkForce red;
+      pointer = lib.mkForce blue;
       marker = lib.mkForce base04;
       prompt = lib.mkForce green;
       info = lib.mkForce base04;
     };
     defaultOptions = [
       "--layout=reverse"
-      "--info=right"
+      "--info=inline-right"
       "--highlight-line"
+      "--ghost='Begin typing..'"
     ];
   };
 

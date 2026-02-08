@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 eval "$(compgen -c | sort -u | fzf)"

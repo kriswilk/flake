@@ -5,6 +5,7 @@
     BROWSER = "firefox";
     EDITOR = "nvim";
     VISUAL = "nvim";
-    TERMINAL = "foot";
+    TERMINAL = "footclient";
+    TERMINAL_FLOAT = "footclient --app-id='terminal-float'";
   };
 }

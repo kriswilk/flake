@@ -52,10 +52,8 @@ window-rule {
 }
 
 window-rule {
-    match app-id="floating-menu"
+    match app-id="terminal-float"
     open-floating true
-    default-column-width { proportion 0.5; }
-    default-window-height { proportion 0.5; }
 }
 
 binds {
@@ -73,24 +71,24 @@ binds {
     Mod+Shift+Q hotkey-overlay-title="Log Out"     { quit; }
 
     // lock
-    Mod+Escape hotkey-overlay-title="Lock Screen" { spawn-sh "swaylock"; }
+    Mod+Escape hotkey-overlay-title="Lock Screen" { spawn-sh "swaylock -f"; }
 
     // shortcut
-    Mod+T  hotkey-overlay-title="Terminal"     { spawn-sh "env $TERMINAL"; }
-    Mod+B  hotkey-overlay-title="Browser"      { spawn-sh "env $BROWSER"; }
-    Mod+Y  hotkey-overlay-title="File Manager" { spawn-sh "env $TERMINAL yazi"; }
-    Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "env $TERMINAL qalc"; }
+    Mod+T  hotkey-overlay-title="Terminal"     { spawn-sh "$TERMINAL"; }
+    Mod+B  hotkey-overlay-title="Browser"      { spawn-sh "$BROWSER"; }
+    Mod+Y  hotkey-overlay-title="File Manager" { spawn-sh "$TERMINAL -e yazi"; }
+    Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "$TERMINAL -e qalc"; }
 
     // menu
-    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "floating-menu menu-power-options"; }
-    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "floating-menu menu-run-applications"; }
-    Mod+Shift+Space                                       { spawn-sh "floating-menu menu-run"; }
-    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "floating-menu menu-clipboard-history"; }
+    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "$TERMINAL_FLOAT -e menu-power-options"; }
+    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "$TERMINAL_FLOAT -e menu-run-applications"; }
+    Mod+Shift+Space                                       { spawn-sh "$TERMINAL_FLOAT -e menu-run"; }
+    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "$TERMINAL_FLOAT -e menu-clipboard-history"; }
 
     // menu - symbols
-    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "floating-menu menu-symbols emoji"; }
-    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "floating-menu menu-symbols nerdfont"; }
-    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "floating-menu menu-symbols math"; }
+    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "$TERMINAL_FLOAT -e menu-symbols emoji"; }
+    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "$TERMINAL_FLOAT -e menu-symbols nerdfont"; }
+    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "$TERMINAL_FLOAT -e menu-symbols math"; }
 
     // volume
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

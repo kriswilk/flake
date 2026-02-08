@@ -1,19 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  isScript = name: type: 
-    type == "regular" && lib.hasSuffix ".sh" name;
-  
-  scriptFiles = lib.filterAttrs isScript (builtins.readDir ./.);
+  scriptFiles = lib.filterAttrs
+    (name: type: type == "regular" && !(lib.hasSuffix ".nix" name))
+    (builtins.readDir ./.);
 
-  mkScript = name: _: 
-    let
-      binName = lib.removeSuffix ".sh" name;
-    in
-    pkgs.writeShellApplication {
-      name = binName;
-      text = builtins.readFile ./${name};
-    };
+  mkScript = name: type: pkgs.writeShellScriptBin name (builtins.readFile ./${name});
 
   scriptPackages = lib.mapAttrsToList mkScript scriptFiles;
 in
