@@ -12,7 +12,7 @@ in
   programs.swaylock = {
     enable = true;
     settings = {
-      image = "$XDG_DATA_HOME/flake-asset/lockscreen/lock.png";
+      image = ../asset/lockscreen/lock.png;
       scaling = "center";
       indicator-radius = 256;
       indicator-thickness = 18;

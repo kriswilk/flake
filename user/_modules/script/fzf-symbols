@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cat "$XDG_DATA_HOME/flake-asset/symbol/"${1:-*} |
+cat "$FLAKE_ASSET/symbol/"${1:-*} |
   fzf --multi --exact --no-sort --accept-nth=1 |
   tr -d '\n' |
   wl-copy

@@ -38,7 +38,7 @@ layout {
 }
 
 spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -i $XDG_DATA_HOME/flake-asset/wallpaper/abstract_web.png"
+spawn-sh-at-startup "swaybg -i $FLAKE_ASSET/wallpaper/abstract_web.png"
 
 hotkey-overlay {
     skip-at-startup
@@ -80,15 +80,14 @@ binds {
     Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "$TERMINAL_FLOAT -e qalc"; }
 
     // menu
-    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "$TERMINAL_FLOAT -e menu-power-options"; }
-    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "$TERMINAL_FLOAT -e menu-run-applications"; }
-    Mod+Shift+Space                                       { spawn-sh "$TERMINAL_FLOAT -e menu-run"; }
-    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "$TERMINAL_FLOAT -e menu-clipboard-history"; }
+    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "$TERMINAL_FLOAT -e fzf-power"; }
+    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "$TERMINAL_FLOAT -e fzf-run"; }
+    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "$TERMINAL_FLOAT -e fzf-clipboard"; }
 
     // menu - symbols
-    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "$TERMINAL_FLOAT -e menu-symbols emoji"; }
-    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "$TERMINAL_FLOAT -e menu-symbols nerdfont"; }
-    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "$TERMINAL_FLOAT -e menu-symbols math"; }
+    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "$TERMINAL_FLOAT -e fzf-symbols emoji"; }
+    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "$TERMINAL_FLOAT -e fzf-symbols nerdfont"; }
+    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "$TERMINAL_FLOAT -e fzf-symbols math"; }
 
     // volume
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

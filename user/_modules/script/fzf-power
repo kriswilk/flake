@@ -5,7 +5,7 @@ list=" Lock\n Suspend\n Log Out\n Reboot\n Shutdown"
 
 case $(echo -e "$list" | fzf --no-input) in
   *"Lock")
-    swaylock
+    systemd-run --user swaylock
     ;;
   *"Suspend")
     systemctl suspend
