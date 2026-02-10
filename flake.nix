@@ -1,6 +1,6 @@
 {
   description = "NixOS Host & User Configuration";
-  
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     
@@ -15,6 +15,9 @@
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    # WIP: Remove overlay once neovim officially hits 0.12
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { nixpkgs, ... }@inputs:

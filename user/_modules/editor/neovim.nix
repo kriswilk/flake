@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   stylix.targets.neovim = {
@@ -7,6 +7,8 @@
 
   programs.neovim = {
     enable = true;
+    # WIP: Remove overlay once neovim officially hits 0.12
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
 # WIP: old nvf config... remove once new config is tested
