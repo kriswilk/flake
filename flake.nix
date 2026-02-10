@@ -15,9 +15,6 @@
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-
-    nvf.url = "github:notashelf/nvf";
-    nvf.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, ... }@inputs:
@@ -37,7 +34,6 @@
             useUserPackages = true;
             sharedModules = [
               inputs.nix-index-database.homeModules.default
-              inputs.nvf.homeManagerModules.default
             ];
             extraSpecialArgs = { inherit inputs; };
           };
