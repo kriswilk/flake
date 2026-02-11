@@ -18,7 +18,6 @@ with config.lib.stylix.colors.withHashtag;
       "--layout=reverse"
       "--info=inline-right"
       "--highlight-line"
-      "--ghost='Begin typing..'"
     ];
   };
 
