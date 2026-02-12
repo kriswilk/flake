@@ -16,8 +16,8 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    # WIP: Remove overlay once neovim officially hits 0.12
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nvf.url = "github:notashelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, ... }@inputs:
@@ -37,6 +37,7 @@
             useUserPackages = true;
             sharedModules = [
               inputs.nix-index-database.homeModules.default
+              inputs.nvf.homeManagerModules.default
             ];
             extraSpecialArgs = { inherit inputs; };
           };
