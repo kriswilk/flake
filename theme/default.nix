@@ -1,13 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   stylix = {
     enable = true;
 
-    base16Scheme = builtins.fetchurl {
-      url = "https://github.com/kriswilk/themes/raw/refs/heads/main/ekko/base16/ekko-dark.yaml";
-      sha256 = "sha256:0iayy68gzkpgy2insr06244x297pkl1g2m9mahrilaln3bhnc6c6";
-    };
+    base16Scheme = "${inputs.themes}/ekko/base16/ekko-dark.yaml";
 
     fonts = {
       serif = {

@@ -347,7 +347,8 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
         "nvf": "nvf",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "themes": "themes"
       }
     },
     "stylix": {
@@ -411,6 +412,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770318936,
+        "narHash": "sha256-J95wx0nGmLfL/x2VUErRRxz//hVaiRU2ehJ+wyTNslU=",
+        "owner": "kriswilk",
+        "repo": "themes",
+        "rev": "9fdb4edcf1e8526840cf186e5b070a9e1874ff65",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kriswilk",
+        "repo": "themes",
         "type": "github"
       }
     },
