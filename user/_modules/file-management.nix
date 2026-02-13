@@ -18,6 +18,7 @@ with config.lib.stylix.colors.withHashtag;
       "--layout=reverse"
       "--info=inline-right"
       "--highlight-line"
+      "--bind=change:top"
     ];
   };
 
