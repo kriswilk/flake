@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.starship = {
@@ -38,6 +43,7 @@
         "$battery"
         "$status"
         "$container"
+        "$shlvl"
         "$character"
       ];
 
@@ -47,13 +53,13 @@
         show_always = true;
         format = "[$user]($style)";
       };
-      
+
       hostname = {
         ssh_only = false;
         format = "@[$hostname]($style) ";
         style = "bold green";
       };
-      
+
       directory = {
         format = "[|](bright-black) [$read_only]($read_only_style)[$path]($style) ";
         read_only = "R ";
@@ -62,18 +68,18 @@
         truncation_length = 3;
         truncation_symbol = ".../";
       };
-      
+
       # left side segments - dev / container
 
       git_branch = {
         symbol = "";
         truncation_symbol = "...";
       };
-      
+
       git_commit = {
         tag_symbol = " tag ";
       };
-      
+
       git_status = {
         ahead = ">";
         behind = "<";
@@ -81,17 +87,17 @@
         renamed = "r";
         deleted = "x";
       };
-      
+
       docker_context = {
-        symbol = "docker ";
-        format = "[|](bright-black) [$symbol$context]($style) ";
+        symbol = "docker";
+        format = "[|](bright-black) [$symbol $context]($style) ";
       };
-      
+
       package = {
-        symbol = "pkg ";
-        format = "[|](bright-black) [$symbol$version]($style) ";
+        symbol = "pkg";
+        format = "[|](bright-black) [$symbol $version]($style) ";
       };
-      
+
       # fill
 
       fill = {
@@ -101,65 +107,65 @@
       # right side segments - languages
 
       c = {
-        symbol = "C ";
-        format = " [$symbol($version(-$name))]($style) [|](bright-black)";
+        symbol = "C";
+        format = " [$symbol ($version(-$name) )]($style)[|](bright-black)";
       };
-      
+
       cpp = {
-        symbol = "C++ ";
-        format = " [$symbol($version(-$name))]($style) [|](bright-black)";
+        symbol = "C++";
+        format = " [$symbol ($version(-$name) )]($style)[|](bright-black)";
       };
 
       cmake = {
-        symbol = "cmake ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "cmake";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       golang = {
-        symbol = "go ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "go";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       java = {
-        symbol = "java ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "java";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       lua = {
-        symbol = "lua ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "lua";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       nodejs = {
-        symbol = "nodejs ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "nodejs";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       perl = {
-        symbol = "pl ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "pl";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       python = {
-        symbol = "py ";
-        format = " [\${symbol}\${pyenv_prefix}(\${version} )(\($virtualenv\) )]($style)[|](bright-black)";
+        symbol = "py";
+        format = " [$symbol ($version )(\\($virtualenv\\) )]($style)[|](bright-black)";
       };
 
       ruby = {
-        symbol = "rb ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "rb";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       rust = {
-        symbol = "rs ";
-        format = " [$symbol($version)]($style) [|](bright-black)";
+        symbol = "rs";
+        format = " [$symbol ($version )]($style)[|](bright-black)";
       };
 
       # right side segments - other
 
       nix_shell = {
-        symbol = "nix ";
-        format = " [$symbol$state( \($name\))]($style) [|](bright-black)";
+        symbol = "nix";
+        format = " [$symbol (\\($name\\) )]($style)[|](bright-black)";
       };
 
       # command duration
@@ -186,14 +192,22 @@
       container = {
       };
 
+      shlvl = {
+        disabled = false;
+        symbol = "❯";
+        format = "[$symbol]($style)";
+        repeat = true;
+        repeat_offset = 1;
+      };
+
       character = {
         format = "$symbol ";
-        success_symbol = "[>](bold green)";
-        error_symbol = "[>](bold red)";
-        vimcmd_symbol = "[<](bold green)";
-        vimcmd_replace_one_symbol = "[<](bold orange)";
-        vimcmd_replace_symbol = "[<](bold orange)";
-        vimcmd_visual_symbol = "[<](bold purple)";
+        success_symbol = "[❯](bold green)";
+        error_symbol = "[❯](bold red)";
+        vimcmd_symbol = "[❮](bold green)";
+        vimcmd_replace_one_symbol = "[❮](bold orange)";
+        vimcmd_replace_symbol = "[❮](bold orange)";
+        vimcmd_visual_symbol = "[❮](bold purple)";
       };
     };
   };
