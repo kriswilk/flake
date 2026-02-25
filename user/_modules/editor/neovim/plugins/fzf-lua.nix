@@ -1,6 +1,8 @@
 {
   programs.nvf.settings.vim = {
-    fzf-lua.enable = true;
+    fzf-lua = {
+      enable = true;
+    };
 
     keymaps = [
       {

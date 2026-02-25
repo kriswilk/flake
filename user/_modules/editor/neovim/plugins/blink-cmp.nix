@@ -1,8 +1,7 @@
 {
   programs.nvf.settings.vim = {
-    clipboard = {
+    autocomplete.blink-cmp = {
       enable = true;
-      registers = "unnamedplus";
     };
   };
 }

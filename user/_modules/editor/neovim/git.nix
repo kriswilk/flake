@@ -1,8 +1,7 @@
 {
   programs.nvf.settings.vim = {
-    clipboard = {
+    git = {
       enable = true;
-      registers = "unnamedplus";
     };
   };
 }

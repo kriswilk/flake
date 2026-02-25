@@ -8,11 +8,5 @@
       #nvim-scrollbar.enable = true;
       nvim-web-devicons.enable = true;
     };
-
-    projects.project-nvim.enable = true;
-    git.enable = true;
-    ui.borders.enable = true;
-
-    autocomplete.nvim-cmp.enable = true;
   };
 }

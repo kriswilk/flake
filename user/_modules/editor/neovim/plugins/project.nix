@@ -1,8 +1,7 @@
 {
   programs.nvf.settings.vim = {
-    clipboard = {
+    projects.project-nvim = {
       enable = true;
-      registers = "unnamedplus";
     };
   };
 }

@@ -1,8 +1,7 @@
 {
   programs.nvf.settings.vim = {
-    clipboard = {
+    utility.motion.flash-nvim = {
       enable = true;
-      registers = "unnamedplus";
     };
   };
 }

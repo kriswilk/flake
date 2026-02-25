@@ -15,20 +15,15 @@ with config.lib.stylix.colors.withHashtag;
       maplocalleader = ",";
     };
 
-    # backup, writebackup, swapfile = false
-    preventJunkFiles = true;
-
-    # ignorecase, smartcase = true
-    searchCase = "smart";
-
-    # number, relativenumber = true
-    lineNumberMode = "relNumber";
-
-    # errorbells, visualbell = false
-    bell = "none";
-
     options = {
-      # gutter & cursor
+      # file saving
+      backup = false;
+      writebackup = false;
+      swapfile = false;
+
+      # gutter, numbering, cursor
+      number = true;
+      relativenumber = true;
       signcolumn = "yes";
       cursorline = true;
       cursorlineopt = "line";
@@ -39,6 +34,10 @@ with config.lib.stylix.colors.withHashtag;
       shiftwidth = 4;
       expandtab = true;
       wrap = false;
+
+      # case sensitivity
+      ignorecase = true;
+      smartcase = true;
 
       # other ui
       scrolloff = 3;
