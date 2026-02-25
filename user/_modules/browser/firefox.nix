@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   stylix.targets.firefox = {
@@ -11,7 +16,7 @@
     profiles."default".settings = {
       # sidebar cannot be configured by policy
       "sidebar.revamp" = true;
-      "sidebar.main.tools" = "aichat,history,{446900e4-71c2-419f-a6a7-df9c091e268b},jid0-adyhmvsP91nUO8pRv0Mn2VKeB84@jetpack";
+      "sidebar.main.tools" = "aichat,history,jid0-adyhmvsP91nUO8pRv0Mn2VKeB84@jetpack";
     };
     policies = {
       AutofillAddressEnabled = false;
@@ -26,8 +31,8 @@
         "*" = {
           installation_mode = "blocked";
         };
-        
-        # augmented steam          
+
+        # augmented steam
         "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/augmented-steam/latest.xpi";
           installation_mode = "force_installed";
@@ -35,8 +40,15 @@
         };
 
         # bitwarden
-        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+        #"{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+        #  install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+        #  installation_mode = "force_installed";
+        #  default_area = "navbar";
+        #};
+
+        # 1password
+        "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/1password-x-password-manager/latest.xpi";
           installation_mode = "force_installed";
           default_area = "navbar";
         };
@@ -110,7 +122,7 @@
         StartPage = "none";
         Locked = true;
       };
-      
+
       HttpsOnlyMode = "force_enabled";
       NewTabPage = false;
       NoDefaultBookmarks = true;
@@ -126,22 +138,22 @@
         "browser.download.autohideButton" = false;
         "browser.uiCustomization.state" = builtins.toJSON {
           placements = {
-            widget-overflow-fixed-list = [];
-            unified-extensions-area = [];
+            widget-overflow-fixed-list = [ ];
+            unified-extensions-area = [ ];
             nav-bar = [
               "sidebar-button"
               "back-button"
               "forward-button"
               "stop-reload-button"
               "urlbar-container"
-              
+
               "jid0-adyhmvsp91nuo8prv0mn2vkeb84_jetpack-browser-action"
-              "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action"
+              "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
               "ublock0_raymondhill_net-browser-action"
               "sponsorblocker_ajay_app-browser-action"
               "amptra_keepa_com-browser-action"
               "webedit_ryanluu_dev-browser-action"
-              
+
               "unified-extensions-button"
               "downloads-button"
             ];
@@ -153,9 +165,9 @@
               "tabbrowser-tabs"
               "new-tab-button"
             ];
-            vertical-tabs = [];
+            vertical-tabs = [ ];
             PersonalToolbar = [
-              "personal-bookmarks" 
+              "personal-bookmarks"
             ];
           };
           # WIP: not sure if any of this is needed....
@@ -226,7 +238,7 @@
           URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
           IconURL = "https://search.nixos.org/favicon.ico";
         }
-       {
+        {
           Name = "NixOS Wiki";
           Alias = "@nw";
           URLTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
