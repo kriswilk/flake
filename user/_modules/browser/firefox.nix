@@ -1,11 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-
-{
   stylix.targets.firefox = {
     profileNames = [ "default" ];
   };
@@ -32,25 +25,18 @@
           installation_mode = "blocked";
         };
 
-        # augmented steam
-        "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/augmented-steam/latest.xpi";
-          installation_mode = "force_installed";
-          default_area = "menupanel";
-        };
-
-        # bitwarden
-        #"{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-        #  install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
-        #  installation_mode = "force_installed";
-        #  default_area = "navbar";
-        #};
-
         # 1password
         "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/1password-x-password-manager/latest.xpi";
           installation_mode = "force_installed";
           default_area = "navbar";
+        };
+
+        # augmented steam
+        "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/augmented-steam/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "menupanel";
         };
 
         # keepa
@@ -72,6 +58,13 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
           installation_mode = "force_installed";
           default_area = "menupanel";
+        };
+
+        # twp - translate web pages
+        "{036a55b4-5e72-4d05-a06c-cba2dfcc134a}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/traduzir-paginas-web/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "navbar";
         };
 
         # ublock-origin
@@ -132,6 +125,7 @@
       PasswordManagerEnabled = false;
 
       Preferences = {
+        # disable link previews
         "browser.ml.linkPreview.enabled" = false;
 
         # ui customization
@@ -139,7 +133,11 @@
         "browser.uiCustomization.state" = builtins.toJSON {
           placements = {
             widget-overflow-fixed-list = [ ];
-            unified-extensions-area = [ ];
+            unified-extensions-area = [
+              "_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-browser-action"
+              "webedit_ryanluu_dev-browser-action"
+              "amptra_keepa_com-browser-action"
+            ];
             nav-bar = [
               "sidebar-button"
               "back-button"
@@ -151,8 +149,6 @@
               "_d634138d-c276-4fc8-924b-40a0ea21d284_-browser-action"
               "ublock0_raymondhill_net-browser-action"
               "sponsorblocker_ajay_app-browser-action"
-              "amptra_keepa_com-browser-action"
-              "webedit_ryanluu_dev-browser-action"
 
               "unified-extensions-button"
               "downloads-button"
@@ -170,22 +166,6 @@
               "personal-bookmarks"
             ];
           };
-          # WIP: not sure if any of this is needed....
-          # seen = [
-          #   "developer-button"
-          #   "screenshot-button"
-          #   "jid0-adyhmvsp91nuo8prv0mn2vkeb84_jetpack-browser-action"
-          #   "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action"
-          #   "ublock0_raymondhill_net-browser-action"
-          #   "sponsorblocker_ajay_app-browser-action"
-          #   "amptra_keepa_com-browser-action"
-          #   "webedit_ryanluu_dev-browser-action"
-          # ];
-          # dirtyAreaCache = [
-          #   "unified-extensions-area"
-          #   "nav-bar"
-          #   "vertical-tabs"
-          # ];
           currentVersion = 23;
           newElementCount = 1;
         };
