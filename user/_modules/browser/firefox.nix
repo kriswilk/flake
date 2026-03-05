@@ -1,16 +1,19 @@
 {
+  config,
+  ...
+}:
+
+{
   stylix.targets.firefox = {
     profileNames = [ "default" ];
   };
 
-  # WIP: still need to fine tune preferences, incl. UI arrangement??
+  # WIP: still need to fine tune preferences (esp. AI prefs)
   programs.firefox = {
     enable = true;
-    profiles."default".settings = {
-      # sidebar cannot be configured by policy
-      "sidebar.revamp" = true;
-      "sidebar.main.tools" = "aichat,history,jid0-adyhmvsP91nUO8pRv0Mn2VKeB84@jetpack";
-    };
+
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+
     policies = {
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
@@ -29,56 +32,51 @@
         "{d634138d-c276-4fc8-924b-40a0ea21d284}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/1password-x-password-manager/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "navbar";
+          private_browsing = true;
         };
 
         # augmented steam
         "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/augmented-steam/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "menupanel";
         };
 
         # keepa
         "amptra@keepa.com" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepa/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "menupanel";
         };
 
         # raindrop.io
         "jid0-adyhmvsP91nUO8pRv0Mn2VKeB84@jetpack" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/raindropio/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "navbar";
         };
 
         # sponsorblock
         "sponsorBlocker@ajay.app" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "menupanel";
+          private_browsing = true;
         };
 
         # twp - translate web pages
         "{036a55b4-5e72-4d05-a06c-cba2dfcc134a}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/traduzir-paginas-web/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "navbar";
         };
 
         # ublock-origin
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "navbar";
+          private_browsing = true;
         };
 
         # web edit
         "webedit@ryanluu.dev" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/web-edit/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "menupanel";
         };
       };
 
@@ -102,14 +100,6 @@
         Locked = true;
       };
 
-      GenerativeAI = {
-        Enabled = false;
-        Chatbot = true;
-        LinkPreviews = false;
-        TabGroups = false;
-        Locked = true;
-      };
-
       Homepage = {
         URL = "about:blank";
         StartPage = "none";
@@ -125,10 +115,27 @@
       PasswordManagerEnabled = false;
 
       Preferences = {
-        # disable link previews
-        "browser.ml.linkPreview.enabled" = false;
+        # WIP: previously used "GenerativeAI" policies but with the new AI kill switch, that seems outdated?
+        # WIP: using this until dust settles.
 
-        # ui customization
+        # AI - old prefs... actually effect changes
+        "browser.ml.chat.enabled" = false;
+        "browser.ml.chat.page" = false;
+        "browser.ml.linkPreview.enabled" = false;
+        "browser.tabs.groups.smart.enabled" = false;
+        "browser.tabs.groups.smart.userEnabled" = false;
+        "browser.translations.enable" = false;
+        "extensions.ml.enabled" = false;
+        "pdfjs.enableAltText" = false;
+        # AI - new prefs... these don't seem to do anything except flip the settings UI toggles?
+        "browser.ai.control.default" = "blocked";
+        "browser.ai.control.linkPreviewKeyPoints" = "blocked";
+        "browser.ai.control.pdfjsAltText" = "blocked";
+        "browser.ai.control.sidebarChatbot" = "blocked";
+        "browser.ai.control.smartTabGroups" = "blocked";
+        "browser.ai.control.translations" = "blocked";
+
+        # UI
         "browser.download.autohideButton" = false;
         "browser.uiCustomization.state" = builtins.toJSON {
           placements = {
@@ -139,7 +146,6 @@
               "amptra_keepa_com-browser-action"
             ];
             nav-bar = [
-              "sidebar-button"
               "back-button"
               "forward-button"
               "stop-reload-button"
