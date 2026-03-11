@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
+{
+  ...
+}:
 
 {
   home.sessionVariables = {
-    BROWSER = "firefox";
+    BROWSER = "google-chrome";
     EDITOR = "nvim";
     VISUAL = "nvim";
     TERMINAL = "footclient";

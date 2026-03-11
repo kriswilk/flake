@@ -107,6 +107,49 @@
       };
 
       HttpsOnlyMode = "force_enabled";
+
+      ManagedBookmarks = [
+        {
+          name = "Email";
+          url = "https://app.fastmail.com";
+        }
+        {
+          name = "Calendar";
+          url = "https://app.fastmail.com/calendar";
+        }
+        {
+          name = "Drive";
+          url = "https://drive.google.com";
+        }
+      ];
+
+      Bookmarks = [
+        {
+          Title = "GitHub";
+          URL = "https://github.com";
+        }
+        {
+          Title = "Reddit";
+          URL = "https://reddit.com";
+        }
+        {
+          Title = "CTV News";
+          URL = "https://ctvnews.ca";
+        }
+        {
+          Title = "Amazon";
+          URL = "https://amazon.ca";
+        }
+        {
+          Title = "Kijiji";
+          URL = "https://kijiji.ca";
+        }
+        {
+          Title = "Chit Chats";
+          URL = "https://chitchats.com";
+        }
+      ];
+
       NewTabPage = false;
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
@@ -139,11 +182,10 @@
         "browser.download.autohideButton" = false;
         "browser.uiCustomization.state" = builtins.toJSON {
           placements = {
-            widget-overflow-fixed-list = [ ];
-            unified-extensions-area = [
-              "_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-browser-action"
-              "webedit_ryanluu_dev-browser-action"
-              "amptra_keepa_com-browser-action"
+            TabsToolbar = [
+              "firefox-view-button"
+              "tabbrowser-tabs"
+              "new-tab-button"
             ];
             nav-bar = [
               "back-button"
@@ -159,15 +201,14 @@
               "unified-extensions-button"
               "downloads-button"
             ];
+            unified-extensions-area = [
+              "_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-browser-action"
+              "webedit_ryanluu_dev-browser-action"
+              "amptra_keepa_com-browser-action"
+            ];
             toolbar-menubar = [
               "menubar-items"
             ];
-            TabsToolbar = [
-              "firefox-view-button"
-              "tabbrowser-tabs"
-              "new-tab-button"
-            ];
-            vertical-tabs = [ ];
             PersonalToolbar = [
               "personal-bookmarks"
             ];
