@@ -1,10 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
-    #blender
-    #freecad
-    #kicad
-    #prusa-slicer
+    blender
+    freecad
+    kicad
+    prusa-slicer
   ];
 }

@@ -1,9 +1,11 @@
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
-    #jdk
-    #prismlauncher
-    #sgt-puzzles
+    prismlauncher
+    sgt-puzzles
   ];
 }

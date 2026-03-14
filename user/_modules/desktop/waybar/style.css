@@ -162,11 +162,11 @@ window#waybar {
     margin: 0 2px;
 }
 
-#tray>.passive {
+#tray > .passive {
     -gtk-icon-effect: dim;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
     -gtk-icon-effect: highlight;
     color: @red;
 }

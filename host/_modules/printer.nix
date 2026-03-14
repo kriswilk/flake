@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   services.avahi = {
@@ -63,32 +66,32 @@
     }
     # -----------------------------------------------------
     {
-      name        = "reefnet-office";
+      name = "reefnet-office";
       description = "Brother MFC-7460DN";
-      location    = "reefnet";
-      deviceUri   = "socket://192.168.1.201";
-      model       = "brother-BrGenML1-cups-en.ppd";
-      ppdOptions  = {
+      location = "reefnet";
+      deviceUri = "socket://192.168.1.201";
+      model = "brother-BrGenML1-cups-en.ppd";
+      ppdOptions = {
         PageSize = "Letter";
       };
     }
     {
-      name        = "reefnet-colour";
+      name = "reefnet-colour";
       description = "Lexmark C3224dw";
-      location    = "reefnet";
-      deviceUri   = "socket://192.168.1.202";
-      model       = "drv:///sample.drv/generpcl.ppd";
-      ppdOptions  = {
+      location = "reefnet";
+      deviceUri = "socket://192.168.1.202";
+      model = "drv:///sample.drv/generpcl.ppd";
+      ppdOptions = {
         PageSize = "Letter";
       };
     }
     {
-      name        = "reefnet-thermal";
+      name = "reefnet-thermal";
       description = "Zebra ZT230";
-      location    = "reefnet";
-      deviceUri   = "socket://192.168.1.212";
-      model       = "drv:///sample.drv/zebra.ppd";
-      ppdOptions  = {
+      location = "reefnet";
+      deviceUri = "socket://192.168.1.212";
+      model = "drv:///sample.drv/zebra.ppd";
+      ppdOptions = {
         PageSize = "w288h432"; # 4in x 6in
       };
     }

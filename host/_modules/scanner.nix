@@ -1,4 +1,6 @@
-{ config, lib, pkgs, ... }:
+{
+  ...
+}:
 
 {
   # WIP: needs testing/config

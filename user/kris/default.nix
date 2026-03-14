@@ -1,9 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 
 {
   imports = [
     ../_modules
-  ] ++ lib.fileset.toList (
+  ]
+  ++ lib.fileset.toList (
     lib.fileset.fileFilter (file: file.hasExt "nix" && file.name != "default.nix") ./.
   );
 }

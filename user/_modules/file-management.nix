@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with config.lib.stylix.colors.withHashtag;
 {
@@ -36,6 +41,15 @@ with config.lib.stylix.colors.withHashtag;
         }
       ];
     };
+    settings = {
+      mgr = {
+        ratio = [
+          1
+          1
+          2
+        ];
+      };
+    };
   };
 
   programs.zoxide = {
@@ -50,15 +64,9 @@ with config.lib.stylix.colors.withHashtag;
     tree
     wget
 
-    nemo
-    krename
     bcompare
-
-    # WIP: kdePackages.ark # already installed?
-    # WIP: kdePackages.filelight # already installed?
-    # WIP: kdePackages.k3b # already installed?
-    # WIP: onedrive, gdrive ?
-    # WIP: qbittorrent
-    # WIP: jdownloader2
+    krename
+    nemo
+    qbittorrent
   ];
 }

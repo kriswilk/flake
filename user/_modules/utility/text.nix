@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   programs.jq = {
@@ -20,8 +23,7 @@
     poppler
     yq
 
-    #kdePackages.okular # already installed?
-    #calibre
-    #koreader
+    calibre
+    kdePackages.okular
   ];
 }

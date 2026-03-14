@@ -1,12 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
+    gimp
     imagemagick
+    inkscape
+    krita
     resvg
-
-    #gimp3
-    #inkscape
-    #krita
   ];
 }

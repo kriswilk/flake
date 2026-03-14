@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 
 {
   imports = lib.fileset.toList (

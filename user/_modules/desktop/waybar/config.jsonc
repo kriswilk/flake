@@ -5,17 +5,14 @@
     "spacing": 1,
     "margin": 0,
     "expand-left": true,
-
     "modules-left": [
         "niri/workspaces",
         "niri/window",
     ],
-
     "modules-center": [
         "clock",
         "group/hardware",
     ],
-
     "modules-right": [
         "tray",
         "wireplumber#speaker",
@@ -26,7 +23,6 @@
         "idle_inhibitor",
         "custom/power",
     ],
-
     "niri/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -35,7 +31,6 @@
             "default": "",
         },
     },
-
     "niri/window": {
         "format": "  {title}",
         "expand": true,
@@ -43,8 +38,6 @@
             "(.*) — Mozilla Firefox": "$1",
         },
     },
-
-
     "clock": {
         "format": "󰥔 {:%H:%M 󰃮 %b %d, %Y}",
         "tooltip-format": "<tt>{calendar}</tt>",
@@ -67,7 +60,6 @@
             "on-scroll-down": "shift_down",
         },
     },
-
     "custom/hardware-wrap": {
         "format": "󰓅",
         "tooltip-format": "Resource Usage",
@@ -87,7 +79,6 @@
             "disk",
         ]
     },
-
     "power-profiles-daemon": {
         "format": "{icon}",
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
@@ -99,67 +90,71 @@
             "power-saver": "",
         },
     },
-
     "cpu": {
         "format": "󰘚 {usage}%",
         "interval": 1,
         "on-click": "$TERMINAL -e btop",
     },
-
     "memory": {
         "format": "󰍛 {}%",
         "interval": 1,
         "on-click": "$TERMINAL -e btop",
     },
-
     "temperature": {
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
-        "format-icons": [ "󱃃", "󰔏", "󱃂", ],
+        "format-icons": [
+            "󱃃",
+            "󰔏",
+            "󱃂",
+        ],
     },
-
     "disk": {
         "format": "󰋊 {percentage_used}%",
         "interval": 30,
         "path": "/",
     },
-
-
     "tray": {
         "icon-size": 16,
         "spacing": 5,
     },
-
     "wireplumber#speaker": {
         "node-type": "Audio/Sink",
         "format": "{icon} {volume}%",
-        "format-icons": [ "", "", " ", ],
+        "format-icons": [
+            "",
+            "",
+            " ",
+        ],
         "format-muted": " MUTE",
         "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "wpctl set-volume @DEFAULT_SINK@ 50%",
         "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-",
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%+",
     },
-
     "wireplumber#mic": {
         "node-type": "Audio/Source",
         "format": "{icon} {volume}%",
-        "format-icons": [ "", ],
+        "format-icons": [
+            "",
+        ],
         "format-muted": " OFF",
         "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
         "on-click-right": "wpctl set-volume @DEFAULT_SOURCE@ 50%",
         "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%-",
         "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 5%+",
     },
-
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-icons": [ "󰃞", "󰃟", "󰃠", ],
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠",
+        ],
         "on-click-right": "brightnessctl set 50%",
         "on-scroll-up": "brightnessctl set +5%",
         "on-scroll-down": "brightnessctl set 5%-",
     },
-
     "network": {
         "format-wifi": "󰖩 {essid} ({signalStrength}%)",
         "format-ethernet": "󰈀 {ifname}",
@@ -168,7 +163,6 @@
         "tooltip-format": "{ifname}: {ipaddr}",
         "on-click": "$TERMINAL -e nmtui",
     },
-
     "battery": {
         "states": {
             "good": 95,
@@ -179,9 +173,20 @@
         "format-charging": "󰂄 {capacity}%",
         "format-plugged": "󰚥 {capacity}%",
         "format-alt": "{icon} {time}",
-        "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹", ],
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹",
+        ],
     },
-
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -189,7 +194,6 @@
             "deactivated": "󰒲",
         },
     },
-
     "custom/power": {
         "format": "",
         "tooltip-format": "Power",

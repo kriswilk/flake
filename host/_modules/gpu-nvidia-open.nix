@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 {
   options.gpu-nvidia-open.enable = lib.mkEnableOption "NVIDIA GPU configuration using open-source drivers";

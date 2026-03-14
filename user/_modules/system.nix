@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   programs.btop = {

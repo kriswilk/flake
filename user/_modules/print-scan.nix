@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
     naps2
-    # WIP: fineprint?
   ];
 }
