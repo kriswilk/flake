@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   userDir,
@@ -12,25 +13,38 @@ let
     "scanner"
   ];
   userList = {
-    kris = {
-      isNormalUser = true;
-      description = "Kris Wilk";
-      password = "12345";
-      extraGroups = userGroups ++ [ "wheel" ];
-      shell = pkgs.fish;
-      # WIP: method to set fish as default with home-manager instead?
-    };
     guest = {
       isNormalUser = true;
-      description = "Guest User";
-      password = "guest";
+      hashedPasswordFile = config.sops.secrets."users/guest/password".path;
       extraGroups = userGroups;
       shell = pkgs.fish;
-      # WIP: method to set fish as default with home-manager instead?
+    };
+    daniela = {
+      isNormalUser = true;
+      hashedPasswordFile = config.sops.secrets."users/daniela/password".path;
+      extraGroups = userGroups;
+      shell = pkgs.fish;
+    };
+    hugo = {
+      isNormalUser = true;
+      hashedPasswordFile = config.sops.secrets."users/hugo/password".path;
+      extraGroups = userGroups;
+      shell = pkgs.fish;
+    };
+    kris = {
+      isNormalUser = true;
+      hashedPasswordFile = config.sops.secrets."users/kris/password".path;
+      extraGroups = userGroups ++ [ "wheel" ];
+      shell = pkgs.fish;
     };
   };
 in
 {
+  sops.secrets."users/guest/password".neededForUsers = true;
+  sops.secrets."users/daniela/password".neededForUsers = true;
+  sops.secrets."users/hugo/password".neededForUsers = true;
+  sops.secrets."users/kris/password".neededForUsers = true;
+
   users = {
     mutableUsers = false;
     users = userList;

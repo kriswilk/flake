@@ -5,12 +5,17 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
@@ -65,9 +70,11 @@
                 sharedModules = [
                   inputs.nix-index-database.homeModules.default
                   inputs.nvf.homeManagerModules.default
+                  inputs.sops-nix.homeManagerModules.sops
                 ];
               };
             }
+            inputs.sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
           ];
         }
