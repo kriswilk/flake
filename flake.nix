@@ -43,7 +43,7 @@
       userDir = ./user;
       hostList = [
         "vm"
-        "desktop"
+        "desktop-tv"
       ];
     in
     {
