@@ -5,7 +5,7 @@
 
 {
   sops = {
-    age.keyFile = "/var/lib/sops-nix/keys.txt";
+    age.keyFile = "/var/lib/sops-nix/key.txt";
     defaultSopsFile = ../../../secrets.yaml;
   };
 
