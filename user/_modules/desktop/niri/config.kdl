@@ -44,6 +44,8 @@ layout {
 spawn-at-startup "waybar"
 spawn-sh-at-startup "swaybg -i $FLAKE_ASSET/wallpaper/abstract_web.png"
 
+spawn-sh-at-startup "1password --silent"
+
 hotkey-overlay {
     skip-at-startup
 }
@@ -84,7 +86,7 @@ binds {
     Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "$TERMINAL_FLOAT -e qalc"; }
 
     // menu
-    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "$TERMINAL_FLOAT -e fzf-power"; }
+    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "$TERMINAL_FLOAT -W 15x5 -o font='monospace:size=20' -e fzf-power"; }
     Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "$TERMINAL_FLOAT -e fzf-run"; }
     Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "$TERMINAL_FLOAT -e fzf-clipboard"; }
 
