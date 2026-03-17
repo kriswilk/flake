@@ -8,10 +8,6 @@ let
   transparent = "00000000";
 in
 {
-  stylix.targets.swaylock = {
-    enable = false;
-  };
-
   programs.swaylock = {
     enable = true;
     settings = {

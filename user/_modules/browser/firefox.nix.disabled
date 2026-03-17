@@ -4,10 +4,6 @@
 }:
 
 {
-  stylix.targets.firefox = {
-    profileNames = [ "default" ];
-  };
-
   # WIP: still need to fine tune preferences (esp. AI prefs)
   programs.firefox = {
     enable = true;
