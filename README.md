@@ -4,10 +4,8 @@ NixOS host & user configuration based on flakes and home-manager.
 
 ## Usage
 
-Boot from a NixOS live CD/USB and run:
+After booting from a NixOS live CD/USB, run:
 
 ```
-git clone https://github.com/kriswilk/flake
-chmod +x flake/install.sh
-flake/install.sh
+bash <(curl -Ls https://kriswilk.github.io/flake/install.sh)
 ```
