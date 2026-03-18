@@ -14,40 +14,50 @@ let
   ];
   userList = {
     guest = {
+      uid = 1000;
       isNormalUser = true;
-      hashedPasswordFile = config.sops.secrets."users/guest/password".path;
-      extraGroups = userGroups;
-      shell = pkgs.fish;
-    };
-    daniela = {
-      isNormalUser = true;
-      hashedPasswordFile = config.sops.secrets."users/daniela/password".path;
-      extraGroups = userGroups;
-      shell = pkgs.fish;
-    };
-    hugo = {
-      isNormalUser = true;
-      hashedPasswordFile = config.sops.secrets."users/hugo/password".path;
+      hashedPasswordFile = config.sops.secrets."user/guest/password".path;
       extraGroups = userGroups;
       shell = pkgs.fish;
     };
     kris = {
+      uid = 1001;
       isNormalUser = true;
-      hashedPasswordFile = config.sops.secrets."users/kris/password".path;
-      extraGroups = userGroups ++ [ "wheel" ];
+      hashedPasswordFile = config.sops.secrets."user/kris/password".path;
+      extraGroups = userGroups ++ [
+        "wheel"
+        "share"
+      ];
       shell = pkgs.fish;
+    };
+    daniela = {
+      uid = 1002;
+      isNormalUser = true;
+      hashedPasswordFile = config.sops.secrets."user/daniela/password".path;
+      extraGroups = userGroups ++ [
+        "share"
+      ];
+      shell = pkgs.fish;
+    };
+    hugo = {
+      uid = 1003;
+      isNormalUser = true;
+      hashedPasswordFile = config.sops.secrets."user/hugo/password".path;
+      extraGroups = userGroups;
+      shell = pkgs.fish;
+    };
+  };
+  groupList = {
+    share = {
+      gid = 101;
     };
   };
 in
 {
-  sops.secrets."users/guest/password".neededForUsers = true;
-  sops.secrets."users/daniela/password".neededForUsers = true;
-  sops.secrets."users/hugo/password".neededForUsers = true;
-  sops.secrets."users/kris/password".neededForUsers = true;
-
   users = {
     mutableUsers = false;
     users = userList;
+    groups = groupList;
   };
 
   home-manager = {
