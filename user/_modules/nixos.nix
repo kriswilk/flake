@@ -6,7 +6,6 @@
 {
   programs.nh = {
     enable = true;
-    flake = "/home/kris/.flake";
   };
 
   programs.nix-index = {
