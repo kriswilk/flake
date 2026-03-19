@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p disko
 set -euo pipefail
 
 function notify() {
@@ -10,7 +11,7 @@ notify "HOSTNAME..."
 read -r -p "-> " HOST
 
 notify "DISKO..."
-sudo nix-shell -p disko --command "disko --mode destroy,format,mount --flake github:kriswilk/flake#${HOST}"
+sudo disko --mode destroy,format,mount --flake "github:kriswilk/flake#${HOST}"
 
 notify "AGE KEY..."
 AGE_FILE="/mnt/var/lib/age/keys.txt"
