@@ -12,6 +12,7 @@
     gimp
     imagemagick
     inkscape
+    kdePackages.gwenview
     krita
     resvg
   ];

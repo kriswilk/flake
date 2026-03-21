@@ -13,7 +13,7 @@
           browser = "google-chrome.desktop";
           text = "org.kde.kwrite.desktop";
           document = "org.kde.okular.desktop";
-          image = "imv.desktop";
+          image = "org.kde.gwenview.desktop";
           media = "mpv.desktop";
         in
         {
