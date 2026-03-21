@@ -39,13 +39,5 @@
         terminal = 12;
       };
     };
-
-    targets = {
-      console.enable = true;
-      fish.enable = true;
-      font-packages.enable = true;
-      fontconfig.enable = true;
-      nvf.enable = true;
-    };
   };
 }

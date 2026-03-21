@@ -11,6 +11,8 @@ with config.lib.stylix.colors.withHashtag;
     enable = true;
   };
 
+  stylix.targets.fzf.enable = true;
+
   programs.fzf = {
     enable = true;
     colors = {
@@ -26,6 +28,8 @@ with config.lib.stylix.colors.withHashtag;
       "--bind=change:top"
     ];
   };
+
+  stylix.targets.yazi.enable = true;
 
   programs.yazi = {
     enable = true;

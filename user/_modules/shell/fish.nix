@@ -3,6 +3,8 @@
 }:
 
 {
+  stylix.targets.fish.enable = true;
+
   programs.fish = {
     enable = true;
   };
