@@ -3,20 +3,20 @@ set -euo pipefail
 
 list=" Lock\n Suspend\n Log Out\n Reboot\n Shutdown"
 
-case $(echo -e "$list" | fzf --no-input) in
-  *"Lock")
-    systemd-run --user swaylock
+case $(echo -e "$list" | rofi -dmenu -p "> ") in
+*"Lock")
+    swaylock -f
     ;;
-  *"Suspend")
+*"Suspend")
     systemctl suspend
     ;;
-  *"Log Out")
+*"Log Out")
     niri msg action quit
     ;;
-  *"Reboot")
+*"Reboot")
     systemctl reboot
     ;;
-  *"Shutdown")
+*"Shutdown")
     systemctl poweroff
     ;;
 esac

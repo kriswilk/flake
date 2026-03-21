@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-j4-dmenu-desktop --no-exec --no-generic --dmenu='fzf' | xargs -I {} niri msg action spawn-sh -- "{}"
