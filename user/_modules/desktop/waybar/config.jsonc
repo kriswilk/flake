@@ -197,6 +197,6 @@
     "custom/power": {
         "format": "",
         "tooltip-format": "Power",
-        "on-click": "$TERMINAL_FLOAT -e fzf-power",
+        "on-click": "menu-power",
     },
 }
