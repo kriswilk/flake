@@ -1,0 +1,27 @@
+configuration {
+    cycle: false;
+    disable-history: true;
+    hide-scrollbar: false;
+
+    display-drun: "Applications";
+    display-run: "Executables";
+    display-window: "Windows";
+    display-filebrowser: "Files/Folders";
+    display-ssh: "SSH";
+
+    display-calc: "Result(s)";
+    display-emoji: "Emoji";
+    display-nerdy: "Nerd Font Icons";
+    display-clipboard: "Clipboard Items";
+    display-power: "Power Options";
+
+    filebrowser {
+        directory: "/home";
+    }
+
+    inputchange {
+        action: "kb-row-first";
+    }
+}
+
+@theme "custom"

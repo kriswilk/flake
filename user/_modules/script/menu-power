@@ -1,22 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-list=" Lock\n Suspend\n Log Out\n Reboot\n Shutdown"
-
-case $(echo -e "$list" | rofi -dmenu -p "> ") in
-*"Lock")
-    swaylock -f
-    ;;
-*"Suspend")
-    systemctl suspend
-    ;;
-*"Log Out")
-    niri msg action quit
-    ;;
-*"Reboot")
-    systemctl reboot
-    ;;
-*"Shutdown")
-    systemctl poweroff
-    ;;
-esac
+rofi -show power -modi power:rofi-power -theme-str "window { width: 35%; } listview { lines: 5; }"

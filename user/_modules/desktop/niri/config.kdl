@@ -66,28 +66,27 @@ binds {
     // overview
     Mod+O repeat=false { toggle-overview; }
 
-    // close window or session
-    Mod+Q       repeat=false                       { close-window; }
-    Mod+Shift+Q hotkey-overlay-title="Log Out"     { quit; }
-
-    // lock
-    Mod+Escape hotkey-overlay-title="Lock Screen" { spawn-sh "swaylock -f"; }
-
     // shortcut
-    Mod+T  hotkey-overlay-title="Terminal"     { spawn "ghostty"; }
-    Mod+B  hotkey-overlay-title="Browser"      { spawn "google-chrome"; }
-    Mod+Y  hotkey-overlay-title="File Manager" { spawn "nemo"; }
-    Mod+C  hotkey-overlay-title="Calculator"   { spawn-sh "ghostty -e qalc"; }
+    Mod+T             hotkey-overlay-title="Terminal"        { spawn-sh "$TERMINAL"; }
+    Mod+B             hotkey-overlay-title="Browser"         { spawn-sh "$BROWSER"; }
 
     // menu
-    Mod+Space   hotkey-overlay-title="Applications"       { spawn-sh "rofi -show drun -p '> '"; }
-    Mod+P       hotkey-overlay-title="Power Menu"         { spawn-sh "menu-power"; }
-    Mod+V       hotkey-overlay-title="Clipboard History"  { spawn-sh "menu-cliphist"; }
+    Mod+Space         hotkey-overlay-title="Applications"    { spawn-sh "menu-run"; }
+    Mod+Shift+Space   hotkey-overlay-title="Windows"         { spawn-sh "menu-windows"; }
+    Mod+E             hotkey-overlay-title="Files/Folders"   { spawn-sh "menu-files"; }
+    Mod+V             hotkey-overlay-title="Clipboard Items" { spawn-sh "menu-clipboard"; }
+    Mod+C             hotkey-overlay-title="Calculator"      { spawn-sh "menu-calc"; }
+    Mod+Period        hotkey-overlay-title="Emoji"           { spawn-sh "menu-emoji"; }
+    Mod+Shift+Period  hotkey-overlay-title="Nerd Font Icons" { spawn-sh "menu-nerdfont"; }
 
-    // menu - symbols
-    Mod+E       hotkey-overlay-title="Symbols (Emoji)"    { spawn-sh "menu-symbols emoji"; }
-    Mod+Shift+E hotkey-overlay-title="Symbols (Nerdfont)" { spawn-sh "menu-symbols nerdfont"; }
-    Mod+Ctrl+E  hotkey-overlay-title="Symbols (Math)"     { spawn-sh "menu-symbols math"; }
+    // close window or session
+    Mod+Q             repeat=false                           { close-window; }
+    Mod+Shift+Q       hotkey-overlay-title="Log Out"         { quit; }
+
+    // power options
+    Mod+Escape        hotkey-overlay-title="Lock"            { spawn-sh "swaylock -f"; }
+    Mod+Shift+Escape  hotkey-overlay-title="Suspend"         { spawn-sh "systemctl suspend"; }
+    Mod+P             hotkey-overlay-title="Power Options"   { spawn-sh "menu-power"; }
 
     // volume
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
@@ -229,9 +228,4 @@ binds {
     // If the window is already in a column, they will expel it out.
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
-
-    // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
-    // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
 }

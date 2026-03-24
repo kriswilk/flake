@@ -1,0 +1,78 @@
+* {
+    black: #000000;
+    brightblack: #222222;
+    darkgray: #444444;
+    gray: #666666;
+    lightgray: #BBBBBB;
+    white: #DDDDDD;
+
+    blue: #4499dd;
+
+    background-color: transparent;
+    font: "monospace 12";
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+    text-color: @lightgray;
+}
+
+window {
+    background-color: @black;
+    border: 4px;
+    border-color: @blue;
+    border-radius: 8px;
+}
+
+mainbox {
+    padding: 10px;
+}
+
+inputbar {
+    children: [ entry, num-filtered-rows, prompt ];
+    border: 2px;
+    border-color: @gray;
+    border-radius: 4px;
+    padding: 8px 16px;
+    spacing: 8px;
+}
+
+entry {
+    placeholder: "Begin typing...";
+    placeholder-color: @gray;
+}
+
+message {
+    background-color: @brightblack;
+    border-radius: 4px;
+    margin: 10px 0 0;
+}
+
+textbox {
+    padding: 16px;
+    text-color: @white;
+}
+
+listview {
+    lines: 10;
+    margin: 12px 0 0;
+}
+
+element {
+    border-radius: 4px;
+    padding: 8px 16px;
+    spacing: 8px;
+}
+
+element selected normal, element selected active {
+    background-color: @darkgray;
+    text-color: @white;
+}
+
+element-icon {
+    size: 1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+}

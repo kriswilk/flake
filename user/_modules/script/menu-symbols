@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-cat "$FLAKE_ASSET/symbol/"${1:-*} |
-    rofi -dmenu -p "> " |
-    cut -d ' ' -f1 |
-    tr -d '\n' |
-    wl-copy
