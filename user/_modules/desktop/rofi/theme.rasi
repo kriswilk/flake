@@ -1,4 +1,6 @@
 * {
+    // WIP: need to reference theme, not hardcoded colours
+
     black: #000000;
     brightblack: #222222;
     darkgray: #444444;
