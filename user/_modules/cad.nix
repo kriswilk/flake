@@ -7,7 +7,7 @@
   home.packages = with pkgs; [
     blender
     freecad
-    kicad
+    #    kicad
     prusa-slicer
   ];
 }
