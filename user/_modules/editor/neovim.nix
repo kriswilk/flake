@@ -7,6 +7,8 @@
   home.packages = with pkgs; [
     neovim
 
+    tree-sitter
+
     prettier
 
     lua-language-server
