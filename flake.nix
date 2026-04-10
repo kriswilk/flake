@@ -1,5 +1,7 @@
 {
-  description = "NixOS Host & User Configuration";
+  description = "NixOS Configuration";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -31,49 +33,4 @@
       flake = false;
     };
   };
-
-  outputs =
-    { nixpkgs, ... }@inputs:
-    let
-      hostDir = ./host;
-      userDir = ./user;
-      hostList = [
-        "vm"
-        "desktop-tv"
-      ];
-    in
-    {
-      nixosConfigurations = nixpkgs.lib.genAttrs hostList (
-        hostName:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              hostDir
-              hostName
-              userDir
-              ;
-          };
-          modules = [
-            (hostDir + "/${hostName}")
-            inputs.disko.nixosModules.disko
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                extraSpecialArgs = { inherit inputs; };
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                sharedModules = [
-                  inputs.nix-index-database.homeModules.default
-                  inputs.nvf.homeManagerModules.default
-                  inputs.sops-nix.homeManagerModules.sops
-                ];
-              };
-            }
-            inputs.sops-nix.nixosModules.sops
-            inputs.stylix.nixosModules.stylix
-          ];
-        }
-      );
-    };
 }

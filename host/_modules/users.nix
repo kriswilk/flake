@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  userDir,
   ...
 }:
 
@@ -61,6 +60,6 @@ in
   };
 
   home-manager = {
-    users = lib.mapAttrs (userName: userData: (userDir + "/${userName}")) userList;
+    users = lib.mapAttrs (userName: userData: (../../user + "/${userName}")) userList;
   };
 }
