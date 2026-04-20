@@ -9,7 +9,7 @@
     enable = true;
     autoEnable = false;
 
-    base16Scheme = "${inputs.themes}/ekko/base16/ekko-dark.yaml";
+    base16Scheme = "${inputs.themes}/kanagawa/base16/kanagawa-wave-neutral-oled.yaml";
 
     fonts = {
       serif = {

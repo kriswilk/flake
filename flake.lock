@@ -371,11 +371,11 @@
     "themes": {
       "flake": false,
       "locked": {
-        "lastModified": 1770318936,
-        "narHash": "sha256-J95wx0nGmLfL/x2VUErRRxz//hVaiRU2ehJ+wyTNslU=",
+        "lastModified": 1776704382,
+        "narHash": "sha256-gs2znl7ESZMs2Hmeeb30cWfjzhMWjxks/dO/Z7oTqEU=",
         "owner": "kriswilk",
         "repo": "themes",
-        "rev": "9fdb4edcf1e8526840cf186e5b070a9e1874ff65",
+        "rev": "380db34178837045809c5a4fd6ad78241ccb0f22",
         "type": "github"
       },
       "original": {
