@@ -7,6 +7,6 @@
     BROWSER = "google-chrome";
     EDITOR = "nvim";
     VISUAL = "nvim";
-    TERMINAL = "ghostty";
+    TERMINAL = "footclient";
   };
 }
