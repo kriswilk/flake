@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-rofi -show power -modi power:rofi-power -theme-str "window { width: 35%; } listview { lines: 5; }"

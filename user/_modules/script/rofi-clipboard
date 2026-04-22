@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-if [ "$#" -eq 0 ]; then
-    cliphist list
-    exit 0
-fi
-
-echo "$1" | cliphist decode | wl-copy
