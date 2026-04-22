@@ -22,6 +22,9 @@
       csd = {
         preferred = "none";
       };
+      cursor = {
+        style = "beam";
+      };
       scrollback = {
         lines = 10000;
       };
