@@ -21,6 +21,9 @@
       cursor = {
         style = "beam";
       };
+      environment = {
+        SHLVL = 0;
+      };
       scrollback = {
         lines = 10000;
       };
