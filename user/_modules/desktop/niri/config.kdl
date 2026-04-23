@@ -42,7 +42,7 @@ layout {
 }
 
 debug {
-  // Allows notification actions and window activation from Noctalia.
+  // allows notification actions and window activation from noctalia
   honor-xdg-activation-with-invalid-serial
 }
 
@@ -61,54 +61,51 @@ window-rule {
 }
 
 binds {
-    // Core Noctalia binds
-    Mod+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
-    Mod+S { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-    Mod+Comma { spawn-sh "noctalia-shell ipc call settings toggle"; }
-
     // hotkey inhibitor
-    Mod+Shift+Ctrl+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+Ctrl+Escape    allow-inhibiting=false             { toggle-keyboard-shortcuts-inhibit; }
 
     // help
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+Slash                                             { show-hotkey-overlay; }
 
     // overview
-    Mod+O repeat=false { toggle-overview; }
+    Mod+O             repeat=false                              { toggle-overview; }
 
-    // shortcut
-    Mod+T             hotkey-overlay-title="Terminal"        { spawn-sh "$TERMINAL"; }
-    Mod+B             hotkey-overlay-title="Browser"         { spawn-sh "$BROWSER"; }
+    // quick access
+    Mod+Space         hotkey-overlay-title="Launcher"           { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Mod+Comma         hotkey-overlay-title="Settings"           { spawn-sh "noctalia-shell ipc call settings toggle"; }
+    Mod+S             hotkey-overlay-title="Session Menu"       { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+C             hotkey-overlay-title="Control Center"     { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+    Mod+T             hotkey-overlay-title="Terminal"           { spawn-sh "$TERMINAL"; }
+    Mod+B             hotkey-overlay-title="Browser"            { spawn-sh "$BROWSER"; }
 
-    // close window or session
-    Mod+Q             repeat=false                           { close-window; }
-    Mod+Shift+Q       hotkey-overlay-title="Log Out"         { quit; }
-
-    // power options
-    // Mod+Escape        hotkey-overlay-title="Lock"            { spawn-sh "swaylock -f"; }
-    // Mod+Shift+Escape  hotkey-overlay-title="Suspend"         { spawn-sh "systemctl suspend"; }
-    // Mod+P             hotkey-overlay-title="Power Options"   { spawn-sh "menu-power"; }
+    // session
+    Mod+Q             repeat=false                              { close-window; }
+    Mod+Shift+Q       hotkey-overlay-title="Log Out"            { quit; }
+    Mod+Escape        hotkey-overlay-title="Lock"               { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+    Mod+Shift+Escape  hotkey-overlay-title="Lock & Suspend"     { spawn-sh "noctalia-shell ipc call sessionMenu lockAndSuspend"; }
 
     // brightness
-    XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86MonBrightnessUp      allow-when-locked=true             { spawn-sh "noctalia-shell ipc call brightness increase"; }
+    XF86MonBrightnessDown    allow-when-locked=true             { spawn-sh "noctalia-shell ipc call brightness decrease"; }
 
     // audio
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86AudioRaiseVolume     allow-when-locked=true             { spawn-sh "noctalia-shell ipc call volume increase"; }
+    XF86AudioLowerVolume     allow-when-locked=true             { spawn-sh "noctalia-shell ipc call volume decrease"; }
+    XF86AudioMute            allow-when-locked=true             { spawn-sh "noctalia-shell ipc call volume muteOutput"; }
+    XF86AudioMicMute         allow-when-locked=true             { spawn-sh "noctalia-shell ipc call volume muteInput"; }
 
-    // media keys
-    // XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    // XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    // XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    // XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    // media
+    XF86AudioPlay            allow-when-locked=true             { spawn-sh "noctalia-shell ipc call media playPause"; }
+    XF86AudioStop            allow-when-locked=true             { spawn-sh "noctalia-shell ipc call media pause"; }
+    XF86AudioNext            allow-when-locked=true             { spawn-sh "noctalia-shell ipc call media next"; }
+    XF86AudioPrev            allow-when-locked=true             { spawn-sh "noctalia-shell ipc call media previous"; }
 
     // screenshot
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    // floating
+    // windows - floating
     Mod+F       { toggle-window-floating; }
     Mod+Shift+F { switch-focus-between-floating-and-tiling; }
 
@@ -116,11 +113,13 @@ binds {
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
+
     // window - size nudge
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
+
     // window - maximize
     Mod+M { maximize-column; }
     Mod+Shift+M { fullscreen-window; }
