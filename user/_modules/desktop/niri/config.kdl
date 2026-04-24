@@ -69,7 +69,7 @@ layout {
 // WINDOW RULES
 //
 window-rule {
-    geometry-corner-radius 4
+    geometry-corner-radius 10
     clip-to-geometry true
 }
 //
