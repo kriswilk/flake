@@ -76,19 +76,27 @@ window-rule {
 // BINDS
 //
 binds {
+    //
     // hotkey inhibitor
+    //
     Mod+Shift+Ctrl+Escape allow-inhibiting=false {
         toggle-keyboard-shortcuts-inhibit
     }
+    //
     // help
+    //
     Mod+Shift+Slash {
         show-hotkey-overlay
     }
+    //
     // overview
+    //
     Mod+O repeat=false {
         toggle-overview
     }
+    //
     // quick access
+    //
     Mod+Space hotkey-overlay-title="Launcher" {
         spawn-sh "noctalia-shell ipc call launcher toggle"
     }
@@ -107,7 +115,9 @@ binds {
     Mod+B hotkey-overlay-title="Browser" {
         spawn-sh "$BROWSER"
     }
+    //
     // session
+    //
     Mod+Q hotkey-overlay-title="Close Window" repeat=false {
         close-window
     }
@@ -120,14 +130,18 @@ binds {
     Mod+Shift+Escape hotkey-overlay-title="Lock & Suspend" {
         spawn-sh "noctalia-shell ipc call sessionMenu lockAndSuspend"
     }
+    //
     // brightness
+    //
     XF86MonBrightnessUp allow-when-locked=true {
         spawn-sh "noctalia-shell ipc call brightness increase"
     }
     XF86MonBrightnessDown allow-when-locked=true {
         spawn-sh "noctalia-shell ipc call brightness decrease"
     }
+    //
     // audio
+    //
     XF86AudioRaiseVolume allow-when-locked=true {
         spawn-sh "noctalia-shell ipc call volume increase"
     }
@@ -140,7 +154,9 @@ binds {
     XF86AudioMicMute allow-when-locked=true {
         spawn-sh "noctalia-shell ipc call volume muteInput"
     }
+    //
     // media
+    //
     XF86AudioPlay allow-when-locked=true {
         spawn-sh "noctalia-shell ipc call media playPause"
     }
@@ -153,7 +169,9 @@ binds {
     XF86AudioPrev allow-when-locked=true {
         spawn-sh "noctalia-shell ipc call media previous"
     }
+    //
     // screenshot
+    //
     Print {
         screenshot
     }
@@ -163,14 +181,18 @@ binds {
     Alt+Print {
         screenshot-window
     }
+    //
     // windows - floating
+    //
     Mod+F {
         toggle-window-floating
     }
     Mod+Shift+F {
         switch-focus-between-floating-and-tiling
     }
+    //
     // window - size presets
+    //
     Mod+R {
         switch-preset-column-width
     }
@@ -180,7 +202,9 @@ binds {
     Mod+Ctrl+R {
         reset-window-height
     }
+    //
     // window - size nudge
+    //
     Mod+Minus {
         set-column-width "-10%"
     }
@@ -193,7 +217,9 @@ binds {
     Mod+Shift+Equal {
         set-window-height "+10%"
     }
+    //
     // window - maximize
+    //
     Mod+M {
         maximize-column
     }
@@ -203,7 +229,9 @@ binds {
     Mod+Ctrl+M {
         expand-column-to-available-width
     }
+    //
     // window - focus
+    //
     Mod+Left {
         focus-column-left
     }
@@ -228,7 +256,9 @@ binds {
     Mod+L {
         focus-column-right
     }
+    //
     // window - movement
+    //
     Mod+Ctrl+Left {
         move-column-left
     }
@@ -313,18 +343,6 @@ binds {
     Mod+Shift+Ctrl+L {
         move-column-to-monitor-right
     }
-    Mod+Page_Down {
-        focus-workspace-down
-    }
-    Mod+Page_Up {
-        focus-workspace-up
-    }
-    Mod+U {
-        focus-workspace-down
-    }
-    Mod+I {
-        focus-workspace-up
-    }
     Mod+Ctrl+Page_Down {
         move-column-to-workspace-down
     }
@@ -387,6 +405,18 @@ binds {
     Mod+Ctrl+Shift+WheelScrollUp {
         move-column-left
     }
+    //
+    // focus - workspace
+    //
+    Mod+Page_Up {
+        focus-workspace-up
+    }
+    Mod+Page_Down {
+        focus-workspace-down
+    }
+    Mod+Tab {
+        focus-workspace-previous
+    }
     Mod+1 {
         focus-workspace 1
     }
@@ -414,6 +444,9 @@ binds {
     Mod+9 {
         focus-workspace 9
     }
+    //
+    //
+    //
     Mod+Ctrl+1 {
         move-column-to-workspace 1
     }
@@ -440,10 +473,6 @@ binds {
     }
     Mod+Ctrl+9 {
         move-column-to-workspace 9
-    }
-    // previous workspace
-    Mod+Tab {
-        focus-workspace-previous
     }
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
