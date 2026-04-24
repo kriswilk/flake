@@ -57,12 +57,12 @@ layout {
         active-color "#4499dd"
         inactive-color "#444444"
     }
- /-shadow {
-        off
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#00000077"
+    shadow {
+        on
+        softness 10
+        spread 3
+        offset x=5 y=5
+        color "#00000064"
     }
 }
 //
