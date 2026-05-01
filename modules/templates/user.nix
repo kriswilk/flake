@@ -13,6 +13,8 @@
       features.sops
       features.stylix
 
+      features.variables
+
       den.aspects.legacy
     ];
   };
