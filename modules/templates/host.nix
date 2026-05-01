@@ -1,7 +1,6 @@
 {
   bundles,
   den,
-  features,
   groups,
   ...
 }:
@@ -9,12 +8,12 @@
   templates.host = {
     includes = [
       den._.hostname
-
       groups.share
 
-      features.disko
-
       bundles.core
+
+      bundles.browser
+      bundles.desktop
       bundles.shell
 
       den.aspects.legacy

@@ -5,6 +5,7 @@
 {
   bundles.core = {
     includes = [
+      features.disko
       features.sops
       features.stylix
 

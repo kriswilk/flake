@@ -1,7 +1,6 @@
 {
   bundles,
   den,
-  features,
   ...
 }:
 {
@@ -10,9 +9,10 @@
       den._.define-user
       (den._.user-shell "fish")
 
-      features.nix-index
-
       bundles.core
+
+      bundles.browser
+      bundles.desktop
       bundles.shell
 
       den.aspects.legacy
