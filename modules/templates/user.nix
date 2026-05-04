@@ -19,6 +19,7 @@
       bundles.multimedia
       bundles.shell
       bundles.terminal
+      bundles.utility
 
       den.aspects.legacy
     ];
