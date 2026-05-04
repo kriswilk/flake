@@ -1,5 +1,5 @@
 {
-  features.bluetooth = {
+  features.hardware_bluetooth = {
     nixos = {
       hardware.bluetooth = {
         enable = true;

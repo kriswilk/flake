@@ -1,5 +1,5 @@
 {
-  features.scan = {
+  features.hardware_scan = {
     nixos = {
       # WIP: needs testing/config
       hardware.sane = {

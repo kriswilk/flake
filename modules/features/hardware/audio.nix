@@ -1,5 +1,5 @@
 {
-  features.audio = {
+  features.hardware_audio = {
     nixos = {
       security.rtkit = {
         enable = true;
@@ -13,16 +13,5 @@
         jack.enable = true;
       };
     };
-
-    homeManager =
-      {
-        pkgs,
-        ...
-      }:
-      {
-        home.packages = with pkgs; [
-          audacity
-        ];
-      };
   };
 }

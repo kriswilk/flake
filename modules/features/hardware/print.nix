@@ -1,5 +1,5 @@
 {
-  features.print = {
+  features.hardware_print = {
     nixos =
       {
         pkgs,

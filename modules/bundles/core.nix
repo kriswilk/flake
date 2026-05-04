@@ -6,17 +6,10 @@
   bundles.core = {
     includes = [
       features.disko
+      features.environment
+      features.nix
       features.sops
       features.stylix
-
-      features.audio
-      features.bluetooth
-      features.gaming
-      features.network
-      features.nix
-      features.print
-      features.scan
-      features.environment
     ];
   };
 }

@@ -1,5 +1,5 @@
 {
-  features.gaming = {
+  features.gaming_steam = {
     nixos =
       {
         pkgs,
@@ -19,18 +19,6 @@
           localNetworkGameTransfers.openFirewall = true;
         };
         # WIP: proton version(s), alternatives?
-      };
-
-    homeManager =
-      {
-        pkgs,
-        ...
-      }:
-      {
-        home.packages = with pkgs; [
-          prismlauncher
-          sgt-puzzles
-        ];
       };
   };
 }
