@@ -1,5 +1,5 @@
 {
-  features.environment = {
+  features.core_environment = {
     nixos = {
       environment.variables = {
         # add system-level variables here

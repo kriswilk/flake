@@ -10,7 +10,7 @@
     };
   };
 
-  features.disko = {
+  features.core_disko = {
     nixos = {
       imports = [
         inputs.disko.nixosModules.disko

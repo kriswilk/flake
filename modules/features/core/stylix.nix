@@ -14,7 +14,7 @@
     };
   };
 
-  features.stylix = {
+  features.core_stylix = {
     nixos =
       {
         pkgs,

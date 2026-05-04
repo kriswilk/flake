@@ -10,7 +10,7 @@
     };
   };
 
-  features.nix = {
+  features.core_nix = {
     nixos = {
       nix.settings = {
         experimental-features = [

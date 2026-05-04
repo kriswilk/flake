@@ -10,7 +10,7 @@
     };
   };
 
-  features.sops = {
+  features.core_sops = {
     nixos =
       {
         config,
@@ -24,7 +24,7 @@
 
         sops = {
           age.keyFile = "/var/lib/age/keys.txt";
-          defaultSopsFile = ../../secrets.yaml;
+          defaultSopsFile = ./secrets.yaml;
 
           secrets = {
             "user/guest/password" = {

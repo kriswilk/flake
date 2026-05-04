@@ -1,5 +1,5 @@
 {
-  features.font = {
+  features.core_font = {
     nixos = {
       fonts.fontconfig = {
         enable = true;
