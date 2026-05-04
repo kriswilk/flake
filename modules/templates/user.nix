@@ -13,7 +13,9 @@
 
       bundles.browser
       bundles.desktop
+      bundles.editor
       bundles.shell
+      bundles.terminal
 
       den.aspects.legacy
     ];

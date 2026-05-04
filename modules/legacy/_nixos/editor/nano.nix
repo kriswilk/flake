@@ -1,9 +1,0 @@
-{
-  ...
-}:
-
-{
-  programs.nano = {
-    enable = true;
-  };
-}

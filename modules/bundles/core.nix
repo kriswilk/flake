@@ -16,7 +16,7 @@
       features.nix
       features.print
       features.scan
-      features.variables
+      features.environment
     ];
   };
 }
