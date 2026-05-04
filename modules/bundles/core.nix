@@ -12,7 +12,6 @@
       features.core_font
       features.core_locale
       features.core_nix
-      features.core_packages
       features.core_sops
       features.core_stylix
       features.core_swap
