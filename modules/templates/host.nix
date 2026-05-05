@@ -9,19 +9,10 @@
       den._.hostname
 
       bundles.core
+      bundles.desktop
       bundles.filesystem
       bundles.hardware
-
-      bundles.browser
-      bundles.desktop
-      bundles.editor
-      bundles.gaming
-      bundles.multimedia
-      bundles.shell
-      bundles.terminal
-      bundles.utility
-
-      den.aspects.legacy
+      bundles.software
     ];
   };
 }
