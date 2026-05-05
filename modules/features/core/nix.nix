@@ -53,6 +53,7 @@
 
         programs.nh = {
           enable = true;
+          flake = "/etc/nixos";
         };
 
         home.packages = with pkgs; [
