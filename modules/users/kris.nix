@@ -24,23 +24,17 @@
             "networkmanager"
             "scanner"
 
-            "share"
+            "fathoms"
+            "reefnet"
           ];
         };
       };
 
-    homeManager =
-      {
-        pkgs,
-        ...
-      }:
-      {
-        home.packages = [ pkgs.cowsay ];
-
-        programs.git = {
-          settings.user.name = "Kris Wilk";
-          settings.user.email = "kris@reefnet.ca";
-        };
+    homeManager = {
+      programs.git = {
+        settings.user.name = "Kris Wilk";
+        settings.user.email = "kris@reefnet.ca";
       };
+    };
   };
 }

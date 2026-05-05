@@ -23,7 +23,7 @@
             "networkmanager"
             "scanner"
 
-            "share"
+            "fathoms"
           ];
         };
       };

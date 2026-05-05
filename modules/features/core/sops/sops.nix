@@ -41,6 +41,7 @@
             };
 
             "share/fathoms" = { };
+            "share/reefnet" = { };
           };
         };
 

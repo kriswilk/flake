@@ -10,6 +10,7 @@
       (den._.user-shell "fish")
 
       bundles.core
+      bundles.filesystem
       bundles.hardware
 
       bundles.browser

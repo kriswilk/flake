@@ -1,16 +1,15 @@
 {
   bundles,
   den,
-  groups,
   ...
 }:
 {
   templates.host = {
     includes = [
       den._.hostname
-      groups.share
 
       bundles.core
+      bundles.filesystem
       bundles.hardware
 
       bundles.browser
