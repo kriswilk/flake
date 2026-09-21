@@ -11,9 +11,6 @@
             resize-by-cells = false;
             resize-keep-grid = "no";
           };
-          csd = {
-            preferred = "none";
-          };
           cursor = {
             style = "beam";
           };
