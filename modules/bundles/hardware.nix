@@ -9,6 +9,7 @@
       features.hardware_bluetooth
       features.hardware_graphics
       features.hardware_network
+      features.hardware_power
       features.hardware_print
       features.hardware_scan
     ];

@@ -26,8 +26,6 @@
           yq
 
           calibre
-          kdePackages.kate
-          kdePackages.okular
         ];
       };
   };
