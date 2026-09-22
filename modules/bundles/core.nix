@@ -13,7 +13,7 @@
       features.core_locale
       features.core_nix
       features.core_sops
-      features.core_stylix
+      features.core_theme
       features.core_swap
     ];
   };

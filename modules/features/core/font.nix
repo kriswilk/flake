@@ -1,15 +1,27 @@
 {
   features.core_font = {
-    nixos = {
-      fonts.fontconfig = {
-        enable = true;
-      };
-    };
+    nixos = 
+    {
+      pkgs,
+      ...
+    }:
+    {
+      fonts = {
+          packages = with pkgs; [
+            noto-fonts
+            noto-fonts-color-emoji
+            nerd-fonts.jetbrains-mono
+          ];
 
-    homeManager = {
-      fonts.fontconfig = {
-        enable = true;
-      };
+          fontconfig = {
+            defaultFonts = {
+              serif = [ "Noto Serif" ];
+              sansSerif = [ "Noto Sans" ];
+              monospace = [ "JetBrainsMonoNL Nerd Font" ];
+              emoji = [ "Noto Color Emoji" ];
+            };
+          };
+        };
     };
   };
 }
