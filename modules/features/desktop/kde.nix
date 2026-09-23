@@ -27,27 +27,27 @@
 
         fonts = {
           general = {
-            family = "Noto Sans";
+            family = "sans-serif";
             pointSize = 10;
           };
           fixedWidth = {
-            family = "JetBrainsMonoNL Nerd Font";
+            family = "monospace";
             pointSize = 10;
           };
           menu = {
-            family = "Noto Sans";
+            family = "sans-serif";
             pointSize = 10;
           };
           small = {
-            family = "Noto Sans";
+            family = "sans-serif";
             pointSize = 8;
           };
           toolbar = {
-            family = "Noto Sans";
+            family = "sans-serif";
             pointSize = 10;
           };
           windowTitle = {
-            family = "Noto Sans";
+            family = "sans-serif";
             pointSize = 10;
             weight = "bold";
           };
@@ -61,7 +61,7 @@
         profiles."Catppuccin" = {
           colorScheme = "Catppuccin";
           font = {
-            name = "JetBrainsMonoNL Nerd Font";
+            name = "monospace";
             size = 10;
           };
         };

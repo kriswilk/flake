@@ -6,7 +6,7 @@
 
         settings = {
           main = {
-            font = "JetBrainsMonoNL Nerd Font:size=10";
+            font = "monospace:size=10";
             initial-window-size-chars = "80x25";
             pad = "5x5";
             resize-by-cells = false;
