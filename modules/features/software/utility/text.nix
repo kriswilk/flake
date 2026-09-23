@@ -19,13 +19,12 @@
         };
 
         home.packages = with pkgs; [
+          calibre
           gawk
           gnugrep
           gnused
           poppler
           yq
-
-          calibre
         ];
       };
   };
