@@ -1,50 +1,53 @@
 {
-  templates,
+  inputs,
+  mkHost,
   ...
 }:
 {
-  den.hosts.x86_64-linux.desktop-tv.users = {
-    guest = { };
-    kris = { };
-    daniela = { };
-    hugo = { };
+  flake.nixosConfigurations.desktop-tv = mkHost "desktop-tv" {
+    users = [
+      "daniela"
+      "guest"
+      "hugo"
+      "kris"
+    ];
   };
 
-  den.aspects.desktop-tv = {
-    includes = [
-      templates.host
+  flake.modules.nixos.hosts-desktop-tv = {
+    imports = [
+      inputs.self.modules.nixos.hosts-desktop-tv-hardware
+      inputs.self.modules.nixos.profiles-all
     ];
 
-    nixos =
-      {
-        config,
-        lib,
-        modulesPath,
-        ...
-      }:
-      {
-        # disko
-        disko.devices.disk.main.device = "/dev/nvme0n1";
-
-        # hardware-configuration.nix
-        imports = [
-          (modulesPath + "/installer/scan/not-detected.nix")
-        ];
-
-        boot.initrd.availableKernelModules = [
-          "xhci_pci"
-          "ahci"
-          "nvme"
-          "usbhid"
-          "usb_storage"
-          "sd_mod"
-        ];
-        boot.initrd.kernelModules = [ ];
-        boot.kernelModules = [ "kvm-intel" ];
-        boot.extraModulePackages = [ ];
-
-        nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-        hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-      };
+    disko.devices.disk.main.device = "/dev/nvme0n1";
   };
+
+  # hardware-configuration.nix
+  flake.modules.nixos.hosts-desktop-tv-hardware =
+    {
+      config,
+      lib,
+      modulesPath,
+      ...
+    }:
+    {
+      imports = [
+        (modulesPath + "/installer/scan/not-detected.nix")
+      ];
+
+      boot.initrd.availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
+      boot.initrd.kernelModules = [ ];
+      boot.kernelModules = [ "kvm-intel" ];
+      boot.extraModulePackages = [ ];
+
+      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+      hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    };
 }

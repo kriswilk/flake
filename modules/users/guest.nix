@@ -1,29 +1,15 @@
 {
-  templates,
+  inputs,
+  mkUser,
   ...
 }:
 {
-  den.aspects.guest = {
-    includes = [
-      templates.user
-      # den._.primary-user
-    ];
-
-    nixos =
-      {
-        config,
-        ...
-      }:
-      {
-        users.users.guest = {
-          uid = 1000;
-          hashedPasswordFile = config.sops.secrets."user/guest/password".path;
-          extraGroups = [
-            "lp"
-            "networkmanager"
-            "scanner"
-          ];
-        };
-      };
+  flake.modules.nixos.users-guest = mkUser "guest" {
+    uid = 1000;
+    home = {
+      imports = [
+        inputs.self.modules.homeManager.profiles-standard
+      ];
+    };
   };
 }

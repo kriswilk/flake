@@ -1,0 +1,24 @@
+{
+  flake.modules.nixos.hardware-network =
+    {
+      pkgs,
+      ...
+    }:
+    {
+      networking.networkmanager = {
+        enable = true;
+        wifi.backend = "iwd";
+      };
+
+      services.openssh.enable = true;
+      services.tailscale.enable = true;
+
+      environment.systemPackages = with pkgs; [
+        cifs-utils
+      ];
+    };
+
+  flake.modules.homeManager.hardware-network = {
+    services.ssh-agent.enable = true;
+  };
+}

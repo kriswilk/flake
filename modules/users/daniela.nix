@@ -1,31 +1,19 @@
 {
-  templates,
+  inputs,
+  mkUser,
   ...
 }:
 {
-  den.aspects.daniela = {
-    includes = [
-      templates.user
-      # den._.primary-user
+  flake.modules.nixos.users-daniela = mkUser "daniela" {
+    uid = 1002;
+    groups = [
+      "fathoms"
     ];
 
-    nixos =
-      {
-        config,
-        ...
-      }:
-      {
-        users.users.daniela = {
-          uid = 1002;
-          hashedPasswordFile = config.sops.secrets."user/daniela/password".path;
-          extraGroups = [
-            "lp"
-            "networkmanager"
-            "scanner"
-
-            "fathoms"
-          ];
-        };
-      };
+    home = {
+      imports = [
+        inputs.self.modules.homeManager.profiles-all
+      ];
+    };
   };
 }
