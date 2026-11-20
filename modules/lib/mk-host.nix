@@ -5,7 +5,7 @@
 let
   nixos = inputs.self.modules.nixos;
 
-  # name:  host name; the host module is nixos.hosts-<name>, and its hardware module sets nixpkgs.hostPlatform
+  # name:  host name; the host module is nixos.hosts-<name>
   # users: users to create; each has a nixos.users-<user> module
   mkHost =
     name:

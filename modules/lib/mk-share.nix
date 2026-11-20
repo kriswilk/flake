@@ -1,13 +1,16 @@
 let
-  # name:   share name; mounted at /mnt/<name>, with a sops secret share/<name>
-  #         holding the credentials and a group <name> owning the files
-  # gid:    gid of the group
-  # device: //server/share path
+  # name:    share name; mounted at /mnt/<name>, with a sops secret share/<name>
+  #          holding the credentials and a group <name> owning the files
+  # gid:     gid of the group
+  # device:  //server/share path
+  # members: users allowed to access the share (membership lives here, so hosts
+  #          without the share never reference its group)
   mkShare =
     name:
     {
       gid,
       device,
+      members ? [ ],
     }:
     {
       config,
@@ -17,7 +20,7 @@ let
       sops.secrets."share/${name}" = { };
 
       users.groups.${name} = {
-        inherit gid;
+        inherit gid members;
       };
 
       fileSystems."/mnt/${name}" = {

@@ -1,10 +1,17 @@
 {
   flake.modules.nixos.hardware-network =
     {
+      config,
+      lib,
       pkgs,
       ...
     }:
     {
+      # all normal users may manage connections
+      users.groups.networkmanager.members = builtins.attrNames (
+        lib.filterAttrs (_: user: user.isNormalUser) config.users.users
+      );
+
       networking.networkmanager = {
         enable = true;
         wifi.backend = "iwd";

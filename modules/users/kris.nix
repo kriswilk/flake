@@ -8,8 +8,6 @@
     uid = 1001;
     groups = [
       "wheel"
-      "fathoms"
-      "reefnet"
     ];
 
     home = {

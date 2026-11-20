@@ -1,7 +1,7 @@
 let
   # name:   user name; password secret is user/<name>/password
   # uid:    user id
-  # groups: groups in addition to the common ones
+  # groups: extra groups (e.g. wheel)
   # home:   the user's home-manager module (imports, settings)
   mkUser =
     name:
@@ -21,12 +21,7 @@ let
         isNormalUser = true;
         inherit uid;
         hashedPasswordFile = config.sops.secrets."user/${name}/password".path;
-        extraGroups = [
-          "lp"
-          "networkmanager"
-          "scanner"
-        ]
-        ++ groups;
+        extraGroups = groups;
       };
 
       home-manager.users.${name} = home;

@@ -6,9 +6,7 @@
 {
   flake.modules.nixos.users-daniela = mkUser "daniela" {
     uid = 1002;
-    groups = [
-      "fathoms"
-    ];
+    groups = [ ];
 
     home = {
       imports = [
