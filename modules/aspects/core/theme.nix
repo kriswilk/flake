@@ -34,6 +34,7 @@
         cache.enable = true;
 
         btop.enable = true;
+        delta.enable = true;
         fish.enable = true;
         foot.enable = true;
         fzf.enable = true;
