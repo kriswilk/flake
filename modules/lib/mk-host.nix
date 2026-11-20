@@ -9,7 +9,9 @@ let
   # users: users to create; each has a nixos.users-<user> module
   mkHost =
     name:
-    { users }:
+    {
+      users,
+    }:
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
         inputs.home-manager.nixosModules.home-manager
@@ -31,6 +33,5 @@ let
     };
 in
 {
-  # makes mkHost available as a module argument; each host file calls it
   _module.args.mkHost = mkHost;
 }

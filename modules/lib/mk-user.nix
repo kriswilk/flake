@@ -33,6 +33,5 @@ let
     };
 in
 {
-  # makes mkUser available as a module argument; each user file calls it
   _module.args.mkUser = mkUser;
 }

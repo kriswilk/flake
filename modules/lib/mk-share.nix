@@ -44,6 +44,5 @@ let
     };
 in
 {
-  # makes mkShare available as a module argument
   _module.args.mkShare = mkShare;
 }
