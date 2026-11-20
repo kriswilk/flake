@@ -8,6 +8,7 @@ let
 in
 {
   flake.modules.nixos.profiles-standard.imports = with nixos; [
+    core-aliases
     core-bootloader
     core-desktop
     core-disko
@@ -30,6 +31,7 @@ in
   ];
 
   flake.modules.homeManager.profiles-standard.imports = with home; [
+    core-aliases
     core-desktop
     core-editors
     core-git
