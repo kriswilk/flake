@@ -18,8 +18,6 @@
       inputs.self.modules.nixos.hosts-desktop-tv-hardware
       inputs.self.modules.nixos.profiles-all
     ];
-
-    disko.devices.disk.main.device = "/dev/nvme0n1";
   };
 
   # hardware-configuration.nix

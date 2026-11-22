@@ -23,6 +23,9 @@ in
         config = commonSettings // {
           core.pager = "delta";
           interactive.diffFilter = "delta --color-only";
+
+          # repo is root-owned but group-writable by wheel
+          safe.directory = "/etc/nixos";
         };
       };
     };

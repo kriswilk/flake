@@ -19,7 +19,6 @@
       inputs.self.modules.nixos.profiles-all
     ];
 
-    disko.devices.disk.main.device = "/dev/sda";
     virtualisation.virtualbox.guest.enable = true;
   };
 

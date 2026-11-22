@@ -7,8 +7,5 @@ NixOS host & user configuration based on flakes and home-manager.
 Boot from a NixOS live CD/USB and run:
 
 ```
-curl -LO https://kriswilk.github.io/flake/install.sh
-chmod +x install.sh
-
-./install.sh
+nix --extra-experimental-features "nix-command flakes" run --refresh github:kriswilk/flake#install
 ```
