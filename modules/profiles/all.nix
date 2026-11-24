@@ -27,6 +27,7 @@ in
     software-cad
     software-creative
     software-development
+    software-flatpak
     software-gaming
   ];
 }
